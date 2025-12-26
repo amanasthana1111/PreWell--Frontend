@@ -1,13 +1,18 @@
 // hooks/userAuth.js
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const userAuth = () => {
   const [isAuth, setIsAuth] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [res , setRes] = useState(null);
+  const [res, setRes] = useState(null);
+
+  const hasFetched = useRef(false);
 
   useEffect(() => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     const checkAuth = async () => {
       try {
         const res1 = await axios.get(
@@ -15,7 +20,7 @@ const userAuth = () => {
           { withCredentials: true }
         );
         setIsAuth(true);
-        setRes(res1)
+        setRes(res1);
       } catch {
         setIsAuth(false);
       } finally {
@@ -26,7 +31,7 @@ const userAuth = () => {
     checkAuth();
   }, []);
 
-  return { isAuth, loading,res };
+  return { isAuth, loading, res };
 };
 
 export default userAuth;
