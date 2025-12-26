@@ -1,6 +1,10 @@
 import { Link } from "react-router";
+import userAuth from "../../hooks/userAuth";
 const Navbar = () => {
+  const {isAuth} = userAuth();
   return (
+
+    
     <nav className="bg-[#FAF4F3] w-full shadow-sm py-4 px-6 flex items-center justify-between">
       {/* Left: Logo */}
       <div className="flex items-center space-x-2">
@@ -16,21 +20,21 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/interview-prep" className="hover:text-red-600 transition">
+          <Link to={isAuth ? "/interview-prep" : "/login"} className="hover:text-red-600 transition">
             Interview Prep 
           </Link>
         </li>
         
         <li>
           <Link
-            to="/ats-resume-checker"
+            to={isAuth ? "/ats-resume-checker" : "/login"}
             className="hover:text-red-600 transition"
           >
             ATS Checker
           </Link>
         </li>
         <li>
-          <Link to="/portfolio-builder" className="hover:text-red-600 transition">
+          <Link to={isAuth ? "/portfolio-builder" : "/login"}className="hover:text-red-600 transition">
             Portfolio Builder 
           </Link>
         </li>

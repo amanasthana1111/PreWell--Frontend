@@ -1,8 +1,10 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { Link } from "react-router";
+import userAuth from "../../hooks/userAuth";
 
 export default function Banner() {
+  const { isAuth} = userAuth(); 
   const [hide , setHide] = useState(false);
 
 
@@ -48,7 +50,7 @@ export default function Banner() {
         
         <Link
           className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
-          to={"/generate"}
+          to={isAuth ? "/ats-resume-checker" : "/login"}
         >
           Try now <span aria-hidden="true">&rarr;</span> 
         </Link>

@@ -1,25 +1,21 @@
 import { Link } from "react-router";
 
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+import userAuth from "../../hooks/userAuth";
 
 const Footer = () => {
+  const {isAuth} = userAuth();
   return (
     <footer className="bg-[#FAF4F3] text-gray-400 px-6 py-12 border border-black-900">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className=" w-8 h-8 rounded-full flex items-center justify-center font-bold text-xl">
-              <img
-                src="https://i.ibb.co/9knDhnVs/Black-White-Modern-Handwriting-Design-Studio-Logo-removebg-preview.png"
-                alt="Genwe Logo"
-                className="w-12 h-auto object-contain filter invert"
-              />
-            </div>
+            
             <span className="text-black text-lg font-semibold">Folify</span>
           </div>
           <p className="text-black">
-            Built the backend & ATS checker — now it scans resumes, extracts
-            keywords & gives smart suggestions instantly.
+            Don’t just share your resume — optimize it for ATS, practice AI mock
+          interviews, and build a professional portfolio website.
           </p>
         </div>
 
@@ -46,15 +42,15 @@ const Footer = () => {
           <ul className=" text-black space-y-2">
             <li className="hover:text-red-600 transition-colors">
               {" "}
-              <Link to={"/ats-resume-checker"}>ATS Checker</Link>
+              <Link to={isAuth ? "/ats-resume-checker" : "/login"}>ATS Checker</Link>
             </li>
             <li className="hover:text-red-600 transition-colors">
               {" "}
-              <Link to={"/generate"}>Generate Portfolio website</Link>
+              <Link to={isAuth ? "/portfolio-builder" :"/login"}>Generate Portfolio website</Link>
             </li>
             <li className="hover:text-red-600 transition-colors">
               
-              <Link to={"/how-it-works"}>How It Works</Link>
+              <Link to={isAuth ? "/interview-prep" :"/login"}>Interview Prep</Link>
             </li>
           </ul>
         </div>

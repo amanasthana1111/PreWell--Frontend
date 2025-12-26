@@ -1,40 +1,37 @@
-import Profile from "./Profile";
+import React from "react";
 import { Link } from "react-router-dom";
 import img1 from "./assets/atsimg.png";
 import userAuth from "../../hooks/userAuth";
 
-const Home2 = () => {
-  const { isAuth } = userAuth();
+
+const HowItWork = () => {
+    const { isAuth} = userAuth(); 
   return (
     <>
       <div className="bg-[#FAF4F3] py-20 px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-between">
         {/* Left Section */}
         <div className="max-w-xl text-center lg:text-left mb-12 lg:mb-0">
           <h3 className="text-sm text-blue-600 font-semibold uppercase mb-2">
-            AI Interview Preparation
+            Interview Prep
           </h3>
-
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
-            Powered by Google’s Gemini AI
+            Powered by Google’s Gemini AI model.
           </h1>
-
           <p className="text-lg text-gray-700 mb-8">
-            Prepare smarter with AI-generated interview questions, ATS resume
+             Prepare smarter with AI-generated interview questions, ATS resume
             insights, and portfolio building — all tailored directly from your
             resume.
           </p>
-
           <ul className="text-left mb-8 space-y-2 text-gray-800">
             <li>✓ AI-driven interview preparation & portfolio generation</li>
             <li>✓ Resume-based questions using real hiring patterns</li>
             <li>✓ ATS-friendly resume analysis and improvement tips</li>
           </ul>
-
           <Link
             to={isAuth ? "/interview-prep" : "/login"}
             className="bg-red-500 text-white px-6 py-3 rounded-md shadow hover:bg-red-600 transition"
           >
-            Start AI Interview Prep
+            Try Our AI-Powered Interview Prepation
           </Link>
         </div>
 
@@ -78,7 +75,7 @@ const Home2 = () => {
               <li>✓ No code needed – just upload your resume</li>
             </ul>
             <Link
-              to={isAuth ? "/portfolio-builder" : "/login"}
+               to={isAuth ? "/portfolio-builder" : "/login"}
               className="bg-red-500 text-white px-6 py-3 rounded-md shadow hover:bg-red-600 transition"
             >
               Try Our AI-Powered Portfolio Builder
@@ -86,7 +83,6 @@ const Home2 = () => {
           </div>
         </div>
       </div>
-      <Profile></Profile>
       <div className="bg-[#FAF4F3] py-20 px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-between">
         {/* Left Section */}
         <div className="max-w-xl text-center lg:text-left mb-12 lg:mb-0">
@@ -118,7 +114,7 @@ const Home2 = () => {
             </li>
           </ul>
           <Link
-            to={isAuth ? "/ats-resume-checker" : "/login"} 
+            to={isAuth ? "/ats-resume-checker" : "/login"}
             className="bg-red-500 text-white px-6 py-3 rounded-md shadow hover:bg-red-600 transition"
           >
             Try Our AI-Powered Ats Scanner
@@ -134,4 +130,4 @@ const Home2 = () => {
   );
 };
 
-export default Home2;
+export default HowItWork;
