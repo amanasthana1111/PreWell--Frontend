@@ -4,9 +4,9 @@ import axios from "axios";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(null); // null = checking
+  const [isAuth, setIsAuth] = useState(null); 
   const [loading, setLoading] = useState(true);
-  const [res, setRes] = useState(null); // user data
+  const [res, setRes] = useState(null); 
 
   // 🔐 Check auth ONCE when app loads
   useEffect(() => {

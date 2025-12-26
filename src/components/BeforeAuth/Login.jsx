@@ -37,10 +37,7 @@ const Login = () => {
         { withCredentials: true }
       );
 
-      // ✅ update auth context with user data
       login(response.data);
-
-      // ✅ redirect
       navigate("/");
     } catch (err) {
       setError("Invalid email or password");
