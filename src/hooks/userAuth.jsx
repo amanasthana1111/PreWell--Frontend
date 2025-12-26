@@ -5,15 +5,17 @@ import { useEffect, useState } from "react";
 const userAuth = () => {
   const [isAuth, setIsAuth] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [res , setRes] = useState(null);
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get(
+        const res1 = await axios.get(
           "https://prewell-backend-2.onrender.com/api/auth",
           { withCredentials: true }
         );
         setIsAuth(true);
+        setRes(res1)
       } catch {
         setIsAuth(false);
       } finally {
@@ -24,7 +26,7 @@ const userAuth = () => {
     checkAuth();
   }, []);
 
-  return { isAuth, loading ,res };
+  return { isAuth, loading,res };
 };
 
 export default userAuth;
