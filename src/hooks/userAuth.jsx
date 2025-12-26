@@ -9,7 +9,7 @@ const userAuth = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        await axios.get(
+        const res = await axios.get(
           "https://prewell-backend-2.onrender.com/api/auth",
           { withCredentials: true }
         );
@@ -24,7 +24,7 @@ const userAuth = () => {
     checkAuth();
   }, []);
 
-  return { isAuth, loading };
+  return { isAuth, loading ,res };
 };
 
 export default userAuth;

@@ -23,7 +23,7 @@ function Home() {
         </p>
 
         <Link
-          to={isAuth ? "/" : "/login"} 
+          to={isAuth ? "/portfolio-builder" : "/login"} 
           className="inline-block bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full text-lg font-medium transition duration-300"
         >
           Generate Portfolio with AI
