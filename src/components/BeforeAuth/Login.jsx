@@ -22,7 +22,7 @@ const Login = () => {
     setAuthTrue();
     navigate("/");
   }
-}, [isDone, navigate, setAuthTrue]);
+}, [isDone, navigate, setAuthTrue ]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

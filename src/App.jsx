@@ -28,6 +28,7 @@ function App() {
         <Route path="/interview-prep" element={<Interview></Interview>}></Route>
         <Route path="/portfolio-builder" element={<Portfolio></Portfolio>}></Route>
         <Route path="/my-account" element={<MyAccount></MyAccount>}></Route>
+        
 
         {/* <Route path="/generate" element={<Generate></Generate>}></Route>
         <Route path="/template" element={<Template></Template>}></Route>
