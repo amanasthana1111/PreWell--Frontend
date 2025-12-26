@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "./context/userContext";
-import useUserAuth from "./hooks/useAuth"; // ✅ protect route
+import useUserAuth from "./hooks/useAuth"; // protect route
 
 function MyAccount() {
-  useUserAuth(); // 🔒 redirect if not logged in
+  useUserAuth(); // redirect if not logged in
 
   const { isAuth, res } = useAuth();
   const user = res;
@@ -73,13 +72,17 @@ function MyAccount() {
       {/* Profile Info */}
       <div className="bg-white shadow rounded-lg p-4 mb-6">
         <h2 className="text-lg font-semibold mb-3">Profile Information</h2>
-        <p><strong>Username:</strong> {user?.username || "N/A"}</p>
-        <p><strong>Email:</strong> {user?.email || "N/A"}</p>
+        <p>
+          <strong>Username:</strong> {user?.username || "N/A"}
+        </p>
+        <p>
+          <strong>Email:</strong> {user?.email || "N/A"}
+        </p>
       </div>
 
       {/* Resume Upload */}
-      <div className="bg-white shadow rounded-lg p-4 mb-6">
-        <h2 className="text-lg font-semibold mb-3">Resume</h2>
+      <div className="bg-white shadow rounded-lg p-6 mb-6 w-full max-w-md flex flex-col items-center gap-6">
+        <h2 className="text-lg font-semibold self-start">Resume</h2>
 
         <input
           type="file"
@@ -87,12 +90,16 @@ function MyAccount() {
           onChange={handleResumeUpload}
           className="mb-2"
         />
+        <div className="text-center">
+          <div className="text-6xl text-red-500 mb-4">📄</div>
+          <p className="text-gray-700 font-semibold">
+            Upload your resume (PDF)
+          </p>
+        </div>
 
         {resume && (
           <>
-            <p className="text-sm text-green-600">
-              Selected: {resume.name}
-            </p>
+            <p className="text-sm text-green-600">Selected: {resume.name}</p>
 
             <button
               onClick={submitResume}
@@ -110,9 +117,7 @@ function MyAccount() {
         <h2 className="text-lg font-semibold mb-3">Subscription</h2>
         <p>
           <strong>Current Plan:</strong>{" "}
-          <span className="text-green-600">
-            {user?.plan || "Free"}
-          </span>
+          <span className="text-green-600">{user?.plan || "Free"}</span>
         </p>
 
         {user?.plan === "free" && (
