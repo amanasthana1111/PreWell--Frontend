@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import axios from "axios"; // ✅ FIX 1
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "./context/userContext";
+import useUserAuth from "./hooks/useUserAuth"; // ✅ protect route
 
 function MyAccount() {
+  useUserAuth(); // 🔒 redirect if not logged in
+
   const { isAuth, res } = useAuth();
   const user = res;
 
   const [resume, setResume] = useState(null);
   const [uploading, setUploading] = useState(false);
 
+  // while auth is checking
   if (isAuth === null) {
     return <div className="p-6 text-center">Loading...</div>;
   }
 
-  if (!isAuth) return null;
-
   // File select
   const handleResumeUpload = (e) => {
     const file = e.target.files[0];
-
     if (!file) return;
 
     if (file.type !== "application/pdf") {
@@ -40,20 +42,22 @@ function MyAccount() {
       setUploading(true);
 
       const formData = new FormData();
-      formData.append("file", resume); 
+      formData.append("file", resume);
 
       const response = await axios.post(
         "https://prewell-backend-2.onrender.com/resumes/upload",
         formData,
         {
-          withCredentials: true, // ✅ cookies / JWT
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
       alert("Resume uploaded successfully");
       console.log(response.data);
       setResume(null);
-
     } catch (error) {
       console.error(error);
       alert("Resume upload failed");

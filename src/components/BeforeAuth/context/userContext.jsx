@@ -1,27 +1,24 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(null);
+  const [isAuth, setIsAuth] = useState(null); // null = checking
   const [loading, setLoading] = useState(true);
-  const [res, setRes] = useState(null);
+  const [res, setRes] = useState(null); // user data
 
-  const hasFetched = useRef(false);
-
+  // 🔐 Check auth ONCE when app loads
   useEffect(() => {
-    if (hasFetched.current) return;
-    hasFetched.current = true;
-
     const checkAuth = async () => {
       try {
-        const res1 = await axios.get(
+        const response = await axios.get(
           "https://prewell-backend-2.onrender.com/api/auth",
           { withCredentials: true }
         );
+
         setIsAuth(true);
-        setRes(res1.data); // store only data
+        setRes(response.data);
       } catch {
         setIsAuth(false);
         setRes(null);
@@ -33,12 +30,22 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
 
-  const setAuthTrue = ()=>{
-    setIsAuth(true)
-  }
+  // ✅ call after login API success
+  const login = (userData) => {
+    setIsAuth(true);
+    setRes(userData);
+  };
+
+  // ✅ call after logout API success
+  const logout = () => {
+    setIsAuth(false);
+    setRes(null);
+  };
 
   return (
-    <AuthContext.Provider value={{ isAuth, loading, res,setAuthTrue }}>
+    <AuthContext.Provider
+      value={{ isAuth, loading, res, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
