@@ -2,14 +2,24 @@ import axios from "axios";
 import React, { useState } from "react";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const [loading, setLoading] = useState(null);
   const [isDone, setIsDone] = useState(null);
+
+  useEffect(() => {
+  if (isDone) {
+    navigate("/");
+  }
+}, [isDone, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
