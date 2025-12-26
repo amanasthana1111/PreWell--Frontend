@@ -6,6 +6,7 @@ import axios from "axios";
 import { useAuth } from "./context/userContext";
 const Navbar = () => {
   const { isAuth,res } = useAuth();
+  console.log(res)
 const navigate = useNavigate();
   const handleLogout = async()=>{
     try {
@@ -73,7 +74,7 @@ const navigate = useNavigate();
       {/* Right: Status + Create Portfolio Button */}
       {isAuth ? (
         <div className="flex items-center space-x-4">
-          <span className="text-gray-800 font-medium">{res?.data?.username}</span>
+          <span className="text-gray-800 font-medium">{res?.username}</span>
 
           <button
             onClick={handleLogout}
