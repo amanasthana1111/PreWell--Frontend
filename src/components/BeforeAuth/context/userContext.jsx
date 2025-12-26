@@ -36,12 +36,10 @@ const login = async () => {
       "https://prewell-backend-2.onrender.com/api/auth",
       { withCredentials: true }
     );
-
     setIsAuth(true);
     setRes(response.data);
-  } catch {
-    setIsAuth(false);
-    setRes(null);
+  } catch (err) {
+    console.error("Login auth check failed", err);
   }
 };
 
