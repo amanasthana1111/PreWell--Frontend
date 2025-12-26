@@ -9,11 +9,9 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-  const [loading , setLoading] = useState(null)
-  const [isDone , setIsDone] = useState(null)
-  const [err , seterr] = useState(null)
-
-
+  const [loading, setLoading] = useState(null);
+  const [isDone, setIsDone] = useState(null);
+  const [err, seterr] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,20 +21,27 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting:", user);
     try {
-        setLoading(true)
-        await axios.post("https://prewell-backend-2.onrender.com/api/register",user);
-        setIsDone(true);
-        
+      setLoading(true);
+      await axios.post(
+        "https://prewell-backend-2.onrender.com/api/register",
+        user
+      );
+      setIsDone(true);
     } catch (error) {
-      seterr(error)
-      
-        setIsDone(false);
-    } finally{
-        setLoading(false)
+      try {
+        const zodString = error.response.data.message.message;
+        const parsed = JSON.parse(zodString);
+        seterr(parsed[0].message); // "Invalid email address"
+      } catch {
+        seterr("Signup failed");
+      }
+      setIsDone(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -118,7 +123,7 @@ const SignUp = () => {
           </div>
 
           {loading ? <Loading></Loading> : ""}
-          {isDone ? <p>Sign up Successfull</p>: err?.message?.name}
+          {isDone ? <p>Sign up Successfull</p> : err}
 
           {/* Button */}
           <button
@@ -132,7 +137,10 @@ const SignUp = () => {
         {/* Footer */}
         <p className="text-sm text-gray-500 text-center mt-6">
           Already have an account?{" "}
-          <Link to="/login" className="text-red-500 hover:underline cursor-pointer">
+          <Link
+            to="/login"
+            className="text-red-500 hover:underline cursor-pointer"
+          >
             Login
           </Link>
         </p>
