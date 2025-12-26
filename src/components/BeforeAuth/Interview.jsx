@@ -1,5 +1,5 @@
 import React from "react";
-import useUserAuth from "./hooks/useUserAuth";
+import useUserAuth from "./hooks/useAuth";
 
 const Interview = () => {
   const isAuth = useUserAuth();

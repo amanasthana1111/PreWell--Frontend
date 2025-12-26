@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./context/userContext";
-import useUserAuth from "./hooks/useUserAuth"; // ✅ protect route
+import useUserAuth from "./hooks/useAuth"; // ✅ protect route
 
 function MyAccount() {
   useUserAuth(); // 🔒 redirect if not logged in
