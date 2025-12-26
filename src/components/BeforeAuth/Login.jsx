@@ -93,7 +93,7 @@ const Login = () => {
           </div>
 
           {loading ? <Loading></Loading> : ""}
-          {isDone ? <p>Login Successfull</p> : ""}
+          {isDone ? <p className="text-green-600 text-sm" >Login Successfull</p> : ""}
 
           {/* Button */}
           <button
