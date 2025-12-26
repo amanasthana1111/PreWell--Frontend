@@ -11,6 +11,7 @@ const SignUp = () => {
   });
   const [loading , setLoading] = useState(null)
   const [isDone , setIsDone] = useState(null)
+  const [err , seterr] = useState(null)
 
 
 
@@ -31,6 +32,8 @@ const SignUp = () => {
         setIsDone(true);
         
     } catch (error) {
+      seterr(error)
+      
         setIsDone(false);
     } finally{
         setLoading(false)
@@ -115,7 +118,7 @@ const SignUp = () => {
           </div>
 
           {loading ? <Loading></Loading> : ""}
-          {isDone ? <p>Sign up Successfull</p>: ""}
+          {isDone ? <p>Sign up Successfull</p>: err?.message?.name}
 
           {/* Button */}
           <button
