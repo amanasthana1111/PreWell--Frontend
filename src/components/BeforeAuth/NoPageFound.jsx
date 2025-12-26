@@ -1,10 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const NoPageFound = () => {
   return (
     <>
-      
       <main className="grid min-h-full place-items-center bg-[#FAF4F3] px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           <p className="text-base font-semibold text-indigo-600">404</p>
@@ -21,17 +19,17 @@ const NoPageFound = () => {
             >
               Go back home
             </Link>
-            <Link to={"/contact"} className="text-sm font-semibold text-gray-900">
+            <Link
+              to={"/contact"}
+              className="text-sm font-semibold text-gray-900"
+            >
               Contact support <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         </div>
       </main>
     </>
-  
+  );
+};
 
-
-  )
-}
-
-export default NoPageFound
+export default NoPageFound;
