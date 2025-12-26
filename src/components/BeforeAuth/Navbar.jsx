@@ -2,6 +2,9 @@ import { Link } from "react-router";
 import userAuth from "../../hooks/userAuth";
 const Navbar = () => {
   const { isAuth,res } = userAuth();
+  const handleLogout = ()=>{
+    
+  }
   return (
     <nav className="bg-[#FAF4F3] w-full shadow-sm py-4 px-6 flex items-center justify-between">
       {/* Left: Logo */}
