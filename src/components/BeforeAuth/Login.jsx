@@ -36,7 +36,7 @@ const Login = () => {
         user,
         { withCredentials: true }
       );
-
+      console.log(response.data)
       login(response.data);
       navigate("/");
     } catch (err) {

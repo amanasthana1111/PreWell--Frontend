@@ -13,11 +13,7 @@ const Navbar = () => {
         "https://prewell-backend-2.onrender.com/api/logout",
         { withCredentials: true }
       );
-
-      // ✅ update frontend auth state
       logout();
-
-      // ✅ soft redirect (NO reload)
       navigate("/");
     } catch (error) {
       console.error("Logout failed", error);

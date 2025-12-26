@@ -8,7 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [res, setRes] = useState(null); 
 
-  // 🔐 Check auth ONCE when app loads
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -31,10 +30,20 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // ✅ call after login API success
-  const login = (userData) => {
+const login = async () => {
+  try {
+    const response = await axios.get(
+      "https://prewell-backend-2.onrender.com/api/auth",
+      { withCredentials: true }
+    );
+
     setIsAuth(true);
-    setRes(userData);
-  };
+    setRes(response.data);
+  } catch {
+    setIsAuth(false);
+    setRes(null);
+  }
+};
 
   // ✅ call after logout API success
   const logout = () => {
