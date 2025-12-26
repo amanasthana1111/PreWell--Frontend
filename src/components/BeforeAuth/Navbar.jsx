@@ -62,7 +62,7 @@ const Navbar = () => {
       {/* Right: Status + Create Portfolio Button */}
       {isAuth ? (
         <div className="flex items-center space-x-4">
-          <span className="text-gray-800 font-medium">{res?.username}</span>
+          <span className="text-gray-800 font-medium">{res?.data?.username}</span>
 
           <button
             onClick={handleLogout}
