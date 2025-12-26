@@ -3,6 +3,7 @@ import { useAuth } from "./context/userContext";
 
 function MyAccount() {
  const { isAuth,res } = useAuth();
+ const user = res
 
   const [resume, setResume] = useState(null);
 
