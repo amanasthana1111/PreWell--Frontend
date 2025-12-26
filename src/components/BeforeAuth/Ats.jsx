@@ -1,9 +1,15 @@
-import React from 'react'
+import useUserAuth from "./hooks/useUserAuth";
 
 const Ats = () => {
-  return (
-    <div>Ats</div>
-  )
-}
+  const isAuth = useUserAuth();
 
-export default Ats
+  if (isAuth === null) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isAuth) return null;
+
+  return <div>Ats</div>;
+};
+
+export default Ats;
