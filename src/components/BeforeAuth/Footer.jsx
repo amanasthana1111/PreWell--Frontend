@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
-import userAuth from "../../hooks/userAuth";
+import { useAuth } from "./context/userContext";
 
 const Footer = () => {
-  const {isAuth} = userAuth();
+  const {isAuth} = useAuth();
   return (
     <footer className="bg-[#FAF4F3] text-gray-400 px-6 py-12 border border-black-900">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">

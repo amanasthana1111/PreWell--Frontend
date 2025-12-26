@@ -1,10 +1,10 @@
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { useState } from "react";
 import { Link } from "react-router";
-import userAuth from "../../hooks/userAuth";
+import { useAuth } from "./context/userContext";
 
 export default function Banner() {
-  const { isAuth} = userAuth(); 
+  const { isAuth} = useAuth(); 
   const [hide , setHide] = useState(false);
 
 

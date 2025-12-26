@@ -1,10 +1,11 @@
-import userAuth from "../../hooks/userAuth";
+
+import { useAuth } from "./context/userContext";
 import Home2 from "./Home2";
 import { Link } from "react-router-dom";
 
 
 function Home() {
-  const { isAuth} = userAuth(); 
+  const { isAuth} = useAuth(); 
   return (
     <>
       <div className="bg-[#FAF4F3] py-20 px-6 text-center">

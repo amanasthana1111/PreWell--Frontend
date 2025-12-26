@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import img1 from "./assets/atsimg.png";
-import userAuth from "../../hooks/userAuth";
+import { useAuth } from "./context/userContext";
 
 
 const HowItWork = () => {
-    const { isAuth} = userAuth(); 
+    const { isAuth} = useAuth(); 
   return (
     <>
       <div className="bg-[#FAF4F3] py-20 px-6 lg:px-16 flex flex-col lg:flex-row items-center justify-between">

@@ -1,10 +1,11 @@
 import { Link } from "react-router";
-import userAuth from "../../hooks/userAuth";
+
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import { useAuth } from "./context/userContext";
 const Navbar = () => {
-  const { isAuth,res } = userAuth();
+  const { isAuth,res } = useAuth();
 const navigate = useNavigate();
   const handleLogout = async()=>{
     try {
