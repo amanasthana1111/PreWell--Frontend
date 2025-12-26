@@ -74,7 +74,12 @@ const navigate = useNavigate();
       {/* Right: Status + Create Portfolio Button */}
       {isAuth ? (
         <div className="flex items-center space-x-4">
-          <span className="text-gray-800 font-medium">{res?.username}</span>
+          <Link
+            to="/my-account"
+            className="bg-red-500 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-md hover:bg-red-600 transition"
+          >
+            {res?.username}
+          </Link>
 
           <button
             onClick={handleLogout}
