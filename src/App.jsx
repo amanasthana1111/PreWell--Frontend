@@ -12,6 +12,7 @@ import Profile from "./components/BeforeAuth/Profile.jsx";
 import Interview from "./components/BeforeAuth/Interview.jsx";
 import { Portfolio } from "./components/BeforeAuth/Portfolio.jsx";
 import MyAccount from "./components/BeforeAuth/MyAccount.jsx";
+import NoPageFound from "./components/BeforeAuth/NoPageFound.jsx"
 function App() {
   return (
     <>
@@ -28,11 +29,12 @@ function App() {
         <Route path="/interview-prep" element={<Interview></Interview>}></Route>
         <Route path="/portfolio-builder" element={<Portfolio></Portfolio>}></Route>
         <Route path="/my-account" element={<MyAccount></MyAccount>}></Route>
-        
+        <Route path="*" element={<NoPageFound></NoPageFound>}></Route>
+
 
         {/* <Route path="/generate" element={<Generate></Generate>}></Route>
         <Route path="/template" element={<Template></Template>}></Route>
-        <Route path="*" element={<NoPageFound></NoPageFound>}></Route>
+        
         <Route path="/preview" element={<PrivewRout/>}></Route> */}
       </Routes>
       <Footer></Footer>
