@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"; // ✅ FIX 1
 import { useAuth } from "./context/userContext";
 
 function MyAccount() {
@@ -6,6 +7,7 @@ function MyAccount() {
   const user = res;
 
   const [resume, setResume] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   if (isAuth === null) {
     return <div className="p-6 text-center">Loading...</div>;
@@ -13,31 +15,45 @@ function MyAccount() {
 
   if (!isAuth) return null;
 
-  const handleResumeUpload = async (e) => {
-    setResume(e.target.files[0]);
+  // File select
+  const handleResumeUpload = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    if (file.type !== "application/pdf") {
+      alert("Only PDF files are allowed");
+      return;
+    }
+
+    setResume(file);
   };
+
+  // Submit resume
   const submitResume = async () => {
-    if (!resume) return alert("Please select a resume");
+    if (!resume) {
+      alert("Please select a resume");
+      return;
+    }
 
     try {
       setUploading(true);
 
       const formData = new FormData();
-      formData.append("file", resume);
+      formData.append("file", resume); 
 
-      const res = await axios.post(
+      const response = await axios.post(
         "https://prewell-backend-2.onrender.com/resumes/upload",
         formData,
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true, // IMPORTANT (cookies/JWT)
+          withCredentials: true, // ✅ cookies / JWT
         }
       );
 
       alert("Resume uploaded successfully");
-      console.log(res.data);
+      console.log(response.data);
+      setResume(null);
+
     } catch (error) {
       console.error(error);
       alert("Resume upload failed");
@@ -53,26 +69,27 @@ function MyAccount() {
       {/* Profile Info */}
       <div className="bg-white shadow rounded-lg p-4 mb-6">
         <h2 className="text-lg font-semibold mb-3">Profile Information</h2>
-        <p>
-          <strong>Username:</strong> {user?.username || "N/A"}
-        </p>
-        <p>
-          <strong>Email:</strong> {user?.email || "N/A"}
-        </p>
+        <p><strong>Username:</strong> {user?.username || "N/A"}</p>
+        <p><strong>Email:</strong> {user?.email || "N/A"}</p>
       </div>
 
       {/* Resume Upload */}
       <div className="bg-white shadow rounded-lg p-4 mb-6">
         <h2 className="text-lg font-semibold mb-3">Resume</h2>
+
         <input
           type="file"
           accept=".pdf"
           onChange={handleResumeUpload}
           className="mb-2"
         />
+
         {resume && (
           <>
-            <p className="text-sm text-green-600">Selected: {resume.name}</p>
+            <p className="text-sm text-green-600">
+              Selected: {resume.name}
+            </p>
+
             <button
               onClick={submitResume}
               disabled={uploading}
@@ -84,12 +101,14 @@ function MyAccount() {
         )}
       </div>
 
-      {/* Subscription Details */}
+      {/* Subscription */}
       <div className="bg-white shadow rounded-lg p-4">
         <h2 className="text-lg font-semibold mb-3">Subscription</h2>
         <p>
           <strong>Current Plan:</strong>{" "}
-          <span className="text-green-600">{user?.plan || "Free"}</span>
+          <span className="text-green-600">
+            {user?.plan || "Free"}
+          </span>
         </p>
 
         {user?.plan === "free" && (
