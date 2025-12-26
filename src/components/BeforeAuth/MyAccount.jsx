@@ -1,5 +1,5 @@
 import React from 'react'
-import useUserAuth from './hooks/useuserAuth';
+import useUserAuth from './hooks/useAuth';
 
 function MyAccount() {
   const isAuth = useUserAuth();

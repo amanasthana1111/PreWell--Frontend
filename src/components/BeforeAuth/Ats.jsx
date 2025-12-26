@@ -1,4 +1,5 @@
-import useUserAuth from "./hooks/useuserAuth";
+import useUserAuth from "./hooks/useAuth";
+
 
 const Ats = () => {
   const isAuth = useUserAuth();
