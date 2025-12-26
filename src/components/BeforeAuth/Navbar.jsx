@@ -1,11 +1,22 @@
 import { Link } from "react-router";
 import userAuth from "../../hooks/userAuth";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 const Navbar = () => {
   const { isAuth,res } = userAuth();
-  console.log(isAuth)
-  console.log(res)
-  const handleLogout = ()=>{
+const navigate = useNavigate();
+  const handleLogout = async()=>{
+    try {
+      const response = await axios.get("https://prewell-backend-2.onrender.com/api/logout",{
+        withCredentials : true
+      })
+      console.log(response)
+      navigate(0);
 
+    } catch (error) {
+      
+    }
   }
   return (
     <nav className="bg-[#FAF4F3] w-full shadow-sm py-4 px-6 flex items-center justify-between">
