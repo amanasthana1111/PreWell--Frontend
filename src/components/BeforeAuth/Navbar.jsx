@@ -12,7 +12,6 @@ const navigate = useNavigate();
       const response = await axios.get("https://prewell-backend-2.onrender.com/api/logout",{
         withCredentials : true
       })
-      console.log(response)
       navigate(0);
 
     } catch (error) {

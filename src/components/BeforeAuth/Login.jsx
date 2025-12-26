@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./context/userContext";
 
 
 const Login = () => {
   const navigate = useNavigate();
+  const {setAuthTrue} = useAuth();
 
   const [user, setUser] = useState({
     email: "",
@@ -17,9 +19,10 @@ const Login = () => {
 
   useEffect(() => {
   if (isDone) {
+    setAuthTrue();
     navigate("/");
   }
-}, [isDone, navigate]);
+}, [isDone, navigate, setAuthTrue]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

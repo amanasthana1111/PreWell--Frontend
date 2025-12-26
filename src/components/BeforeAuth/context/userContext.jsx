@@ -33,8 +33,12 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
 
+  const setAuthTrue = ()=>{
+    setIsAuth(true)
+  }
+
   return (
-    <AuthContext.Provider value={{ isAuth, loading, res }}>
+    <AuthContext.Provider value={{ isAuth, loading, res,setAuthTrue }}>
       {children}
     </AuthContext.Provider>
   );
