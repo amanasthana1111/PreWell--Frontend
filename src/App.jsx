@@ -13,6 +13,8 @@ import Interview from "./components/BeforeAuth/Interview.jsx";
 import { Portfolio } from "./components/BeforeAuth/Portfolio.jsx";
 import MyAccount from "./components/BeforeAuth/MyAccount.jsx";
 import NoPageFound from "./components/BeforeAuth/NoPageFound.jsx"
+import PaymentPage from "./components/BeforeAuth/PaymentPage.jsx";
+import Subscription from "./components/BeforeAuth/Subscription.jsx";
 function App() {
   return (
     <>
@@ -29,6 +31,8 @@ function App() {
         <Route path="/interview-prep" element={<Interview></Interview>}></Route>
         <Route path="/portfolio-builder" element={<Portfolio></Portfolio>}></Route>
         <Route path="/my-account" element={<MyAccount></MyAccount>}></Route>
+        <Route path="/payment" element={<PaymentPage/>}></Route>
+        <Route path="/subscription" element={<Subscription/>}></Route>
         <Route path="*" element={<NoPageFound></NoPageFound>}></Route>
 
 

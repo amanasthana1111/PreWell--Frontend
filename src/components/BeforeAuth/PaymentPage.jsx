@@ -4,7 +4,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function PaymentPage() {
   const navigate = useNavigate();
-  const { state } = useLocation();
+  
+  useEffect(() => {
+  if (!state) {
+    setTimeout(() => navigate("/subscription"), 3000);
+  }
+}, [state]);
+
 
   // plan details
   const plan = state?.plan || "starter";
