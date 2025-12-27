@@ -44,8 +44,8 @@ export default function PaymentPage() {
         {
           firstNo: num1,
           secondNo: num2,
-          sum: answer,
-          planAmount: state?.price,
+          sum: parseInt(answer),
+          planAmount: state?.price?.toString(),
         },
         {
           withCredentials: true,
