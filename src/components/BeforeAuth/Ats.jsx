@@ -218,19 +218,9 @@ const Ats = () => {
             </div>
             {/* {ats?.graph_data && (
               <Graph
-                skillsChartData={Object.entries(
-                  ats.graph_data.skills_distribution
-                ).map(([name, value]) => ({
-                  name,
-                  value,
-                }))}
-                atsChartData={Object.entries(ats.graph_data.ats_breakdown).map(
-                  ([name, value]) => ({
-                    name,
-                    value,
-                  })
-                )}
-              />
+                skillsChartData={ats.graph_data.skills_distribution}
+                atsChartData={ats.graph_data.ats_breakdown}
+              ></Graph>
             )} */}
           </>
         )}
