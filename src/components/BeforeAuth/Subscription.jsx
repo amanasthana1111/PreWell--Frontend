@@ -1,11 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import useUserAuth from "./hooks/useAuth";
 export default function Subscription() {
     const navigate = useNavigate();
+    const isAuth = useUserAuth();
 
   const handleSubscribe = (plan,price) => {
+    
     navigate("/payment", { state: { plan: plan , price: price } });
 
   };
+  if (isAuth === null) {
+      return (
+        <div className="min-h-screen flex items-center justify-center text-gray-600">
+          Loading...
+        </div>
+      );
+    }
+  
+    if (!isAuth) return null;
+  
+    if (isResumeUploaded === null) {
+      return <BlurComponent />;
+    }
 
   return (
     <div className="min-h-screen bg-[#FAF4F3] py-16 px-4">
