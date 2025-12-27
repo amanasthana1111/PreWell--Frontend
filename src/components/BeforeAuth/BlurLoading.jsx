@@ -5,7 +5,7 @@ export default function BlurComponent() {
       {/* Blurred background image */}
       <img
         className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
-        src="https://images.unsplash.com/photo-1705909237050-7a7625b47fac"
+        src="https://docuworx.com.au/wp-content/uploads/2021/06/Data_Capturing_And_Scanning.gif"
         alt="Blurred Background"
       />
 
