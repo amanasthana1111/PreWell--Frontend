@@ -5,12 +5,14 @@ import Subscription from "./Subscription";
 import { Link } from "react-router-dom";
 import BlurComponent from "./BlurLoading";
 import Graph from "./Graph";
+import { useNavigate } from "react-router-dom";
 
 const Ats = () => {
   const isAuth = useUserAuth();
   const [isResumeUploaded, setResumeUploaded] = useState(null);
   const [ats, setAts] = useState(null);
   const [access, setAccess] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const check = async () => {
@@ -30,6 +32,7 @@ const Ats = () => {
           setResumeUploaded(true);
           setAccess(false);
         } else {
+          navigator("/");
           setResumeUploaded(false);
         }
       }
@@ -216,12 +219,22 @@ const Ats = () => {
                 ))}
               </ul>
             </div>
-            {/* {ats?.graph_data && (
+            {ats?.graph_data && (
               <Graph
-                skillsChartData={ats.graph_data.skills_distribution}
-                atsChartData={ats.graph_data.ats_breakdown}
-              ></Graph>
-            )} */}
+                skillsChartData={Object.entries(
+                  ats.graph_data.skills_distribution
+                ).map(([name, value]) => ({
+                  name,
+                  value,
+                }))}
+                atsChartData={Object.entries(ats.graph_data.ats_breakdown).map(
+                  ([name, value]) => ({
+                    name,
+                    value,
+                  })
+                )}
+              />
+            )}
           </>
         )}
       </div>

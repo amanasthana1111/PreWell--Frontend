@@ -19,9 +19,6 @@ export default function Subscription() {
   
     if (!isAuth) return null;
   
-    // if (isResumeUploaded === null) {
-    //   return <BlurComponent />;
-    // }
 
   return (
     <div className="min-h-screen bg-[#FAF4F3] py-16 px-4">
