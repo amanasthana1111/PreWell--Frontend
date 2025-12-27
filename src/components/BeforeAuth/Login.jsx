@@ -65,9 +65,10 @@ const Login = () => {
             <input
               type="email"
               name="email"
+              placeholder="you@example.com"
               value={user.email}
               onChange={handleChange}
-              className="mt-1 w-full rounded-lg border px-4 py-2"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
 
@@ -78,9 +79,10 @@ const Login = () => {
             <input
               type="password"
               name="password"
+              placeholder="••••••••"
               value={user.password}
               onChange={handleChange}
-              className="mt-1 w-full rounded-lg border px-4 py-2"
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
 
