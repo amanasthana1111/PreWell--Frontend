@@ -7,35 +7,23 @@ const Ats = () => {
   const [isResumeUploaded, setResumeUploaded] = useState(null);
   const [ats, setAts] = useState(null);
 
-  // useEffect(() => {
-  //   const check = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "https://prewell-backend-2.onrender.com/start/atsScanner",
-  //         { withCredentials: true }
-  //       );
-  //       setResumeUploaded(true);
-  //       setAts(response.data);
-  //     } catch (error) {
-  //       setResumeUploaded(false);
-  //     }
-  //   };
-  //   check();
-  // }, []);
-
-  const handleResponse = async () => {
-     try {
+  useEffect(() => {
+    const check = async () => {
+      try {
         const response = await axios.get(
           "https://prewell-backend-2.onrender.com/start/atsScanner",
           { withCredentials: true }
         );
         setResumeUploaded(true);
         setAts(response.data);
-        
       } catch (error) {
         setResumeUploaded(false);
       }
-  };
+    };
+    check();
+  }, []);
+
+
 
   if (isAuth === null) {
     return (
