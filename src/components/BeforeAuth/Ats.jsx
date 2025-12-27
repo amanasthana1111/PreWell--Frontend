@@ -23,7 +23,10 @@ const Ats = () => {
     check();
   }, []);
 
-
+  const handleResponse = () => {
+    console.log("Start ATS Scan clicked");
+    // later you can navigate or start scan
+  };
 
   if (isAuth === null) {
     return (
@@ -71,6 +74,13 @@ const Ats = () => {
               Resume not found for ATS scanning
             </div>
           </>
+        )}
+
+        {/* FREE LIMIT MESSAGE */}
+        {ats?.message === "Free limit reached. Please upgrade your plan." && (
+          <div className="mt-6 bg-yellow-50 border border-yellow-300 text-yellow-700 rounded-lg px-4 py-3 text-sm">
+            ⚠️ Free limit reached. Please upgrade your plan to continue.
+          </div>
         )}
       </div>
     </div>
