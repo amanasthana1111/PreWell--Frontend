@@ -4,6 +4,7 @@ import axios from "axios";
 import Subscription from "./Subscription";
 import { Link } from "react-router-dom";
 import BlurComponent from "./BlurLoading";
+import Graph from "./Graph";
 
 const Ats = () => {
   const isAuth = useUserAuth();
@@ -215,6 +216,12 @@ const Ats = () => {
                 ))}
               </ul>
             </div>
+            {ats?.graph_data && (
+              <Graph
+                skillsChartData={ats.graph_data.skills_distribution}
+                atsChartData={ats.graph_data.ats_breakdown}
+              ></Graph>
+            )}
           </>
         )}
       </div>
