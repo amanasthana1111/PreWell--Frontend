@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function PaymentPage() {
   const navigate = useNavigate();
+  const { state } = useLocation();
   
   useEffect(() => {
   if (!state) {
