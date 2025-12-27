@@ -219,7 +219,7 @@ const Ats = () => {
                 ))}
               </ul>
             </div>
-            {ats?.graph_data && (
+            {/* {ats?.graph_data && (
               <Graph
                 skillsChartData={Object.entries(
                   ats.graph_data.skills_distribution
@@ -234,7 +234,7 @@ const Ats = () => {
                   })
                 )}
               />
-            )}
+            )} */}
           </>
         )}
       </div>
