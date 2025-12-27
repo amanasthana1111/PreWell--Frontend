@@ -53,6 +53,7 @@ export default function PaymentPage() {
       );
       navigate("/")
       } catch (error) {
+        console.log(error)
         setError(error)
       }
     } else {
@@ -113,7 +114,7 @@ export default function PaymentPage() {
             />
           </div>
 
-          {error && <p className="text-red-600 text-sm mb-3">{error}</p>}
+          {/* {error && <p className="text-red-600 text-sm mb-3">{error}</p>} */}
 
           {/* BUTTON */}
           <button
