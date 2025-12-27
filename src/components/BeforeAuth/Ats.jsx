@@ -53,23 +53,13 @@ const Ats = () => {
     return <BlurComponent />;
   }
 
-  /* ---------------- SUBSCRIPTION ---------------- */
-
   if (access === false) {
-    return (
-      <div className="min-h-screen bg-[#FAF4F3] flex items-center justify-center px-4">
-        <Subscription />
-      </div>
-    );
+    return <Subscription />;
   }
-
-  /* ---------------- UI ---------------- */
 
   return (
     <div className="min-h-screen bg-[#FAF4F3] py-10 px-4">
-      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8 space-y-10">
-
-        {/* ---------- RESUME NOT UPLOADED ---------- */}
+      <div className="max-w-6xl mx-auto bg-[#FAF4F3] rounded-2xl shadow-lg p-8 space-y-10">
         {!isResumeUploaded && (
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
@@ -87,7 +77,6 @@ const Ats = () => {
           </div>
         )}
 
-        {/* ---------- ATS RESULT ---------- */}
         {isResumeUploaded && ats && (
           <>
             {/* HEADER */}
@@ -95,9 +84,7 @@ const Ats = () => {
               <h1 className="text-3xl font-bold text-gray-900">
                 ATS Resume Analysis
               </h1>
-              <p className="text-gray-600 mt-2">
-                {ats.final_verdict}
-              </p>
+              <p className="text-gray-600 mt-2">{ats.final_verdict}</p>
             </div>
 
             {/* SCORES */}
@@ -113,9 +100,7 @@ const Ats = () => {
                   className="bg-[#FAF4F3] rounded-xl p-4 text-center"
                 >
                   <p className="text-sm text-gray-600">{label}</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {value}%
-                  </p>
+                  <p className="text-2xl font-bold text-gray-900">{value}%</p>
                 </div>
               ))}
             </div>
@@ -123,8 +108,13 @@ const Ats = () => {
             {/* SUMMARY */}
             <div>
               <h2 className="text-xl font-bold mb-3">Resume Summary</h2>
-              <p><strong>Profile:</strong> {ats.resume_summary.profile_type}</p>
-              <p><strong>Experience:</strong> {ats.resume_summary.experience_level}</p>
+              <p>
+                <strong>Profile:</strong> {ats.resume_summary.profile_type}
+              </p>
+              <p>
+                <strong>Experience:</strong>{" "}
+                {ats.resume_summary.experience_level}
+              </p>
 
               <div className="flex flex-wrap gap-2 mt-3">
                 {ats.resume_summary.primary_stack.map((tech, i) => (
@@ -225,7 +215,6 @@ const Ats = () => {
                 ))}
               </ul>
             </div>
-
           </>
         )}
       </div>
