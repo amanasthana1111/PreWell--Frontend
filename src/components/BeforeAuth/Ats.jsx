@@ -21,6 +21,7 @@ const Ats = () => {
         setResumeUploaded(false)
       }
     }
+    check();
   },[])
 
   if (isAuth === null) {
