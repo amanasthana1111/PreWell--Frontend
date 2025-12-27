@@ -1,8 +1,10 @@
-
+import { useNavigate } from "react-router-dom";
 export default function Subscription() {
+    const navigate = useNavigate();
 
-  const handleSubscribe = (plan) => {
-    console.log("Selected Plan:", plan);
+  const handleSubscribe = (plan,price) => {
+    navigate("/payment", { state: { plan: plan , price: price } });
+
   };
 
   return (
@@ -43,7 +45,7 @@ export default function Subscription() {
             </ul>
 
             <button
-              onClick={() => handleSubscribe("starter")}
+              onClick={() => handleSubscribe("starter" , 10)}
               className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-full font-medium transition"
             >
               Get Started
@@ -74,7 +76,7 @@ export default function Subscription() {
             </ul>
 
             <button
-              onClick={() => handleSubscribe("pro")}
+              onClick={() => handleSubscribe("pro" ,20)}
               className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-full font-medium transition"
             >
               Upgrade to Pro
@@ -101,7 +103,7 @@ export default function Subscription() {
             </ul>
 
             <button
-              onClick={() => handleSubscribe("premium")}
+              onClick={() => handleSubscribe("premium",30)}
               className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-full font-medium transition"
             >
               Go Premium
