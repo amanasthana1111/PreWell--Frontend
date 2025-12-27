@@ -3,6 +3,7 @@ import useUserAuth from "./hooks/useAuth";
 import axios from "axios";
 import Subscription from "./Subscription";
 import { Link } from "react-router-dom";
+import BlurComponent from "./BlurLoading";
 
 const Ats = () => {
   const isAuth = useUserAuth();
@@ -54,6 +55,9 @@ const Ats = () => {
       </div>
     );
   }
+  if(isResumeUploaded === null){
+    return <BlurComponent></BlurComponent>
+  }
 
   return (
     <div className="min-h-screen bg-[#FAF4F3] flex items-center justify-center px-4">
@@ -67,7 +71,7 @@ const Ats = () => {
               Your resume is uploaded successfully. You can now analyze your
               resume against ATS filters.
             </p>
-            console.log({ats})
+            {/* console.log({ats}) */}
           </>
         ) : (
           <>
