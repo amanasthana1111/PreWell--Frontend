@@ -4,11 +4,11 @@ import interviewPic from "./assets/a.png"
 import InterviewForm from "./InterviewForm";
 
 const Interview = () => {
-  // const isAuth = useUserAuth();
+  const isAuth = useUserAuth();
 
-  // if (isAuth === null) {
-  //   return <div>Loading...</div>;
-  // }
+  if (isAuth === null) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
