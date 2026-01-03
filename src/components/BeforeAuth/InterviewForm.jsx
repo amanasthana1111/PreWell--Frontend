@@ -41,9 +41,10 @@ export const InterviewForm = () => {
         "https://prewell-backend-2.onrender.com/start/interview",
         userQ,
         { withCredentials: true }
-      );
+      ); 
 
       setQuestion(response.data);
+      setLoading(false);
       setResumeUploaded(true);
       setAccess(true);
     } catch (error) {
@@ -55,6 +56,7 @@ export const InterviewForm = () => {
         navigate("/");
         setResumeUploaded(false);
       }
+      setLoading(false);
     }
   };
   if (hasSubmitted && isResumeUploaded === null) {
@@ -168,11 +170,47 @@ export const InterviewForm = () => {
           )}
 
           {hasSubmitted && isResumeUploaded && Questions && (
-            <div className="bg-white p-8 rounded-2xl shadow-lg w-full">
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <div className="bg-white rounded-2xl shadow-lg p-6 space-y-6">
+              <h2 className="text-2xl font-bold text-gray-900 border-b pb-3">
                 Interview Questions
-              </h1>
-              {/* render Questions here */}
+              </h2>
+
+              <div className="space-y-5">
+                {Questions?.question?.map((ques, index) => (
+                  <div
+                    key={index}
+                    className="rounded-xl border border-gray-200 p-5 hover:shadow-md transition"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-semibold text-red-500">
+                        Question {index + 1}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        AI Generated
+                      </span>
+                    </div>
+
+                    <p className="text-gray-800 leading-relaxed">{ques}</p>
+
+                    {/* Answer Input */}
+                    <input
+                      type="text"
+                      placeholder="Type your answer here..."
+                      className="mt-4 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-4 pt-4 border-t">
+                <button className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition">
+                  Submit Answers
+                </button>
+                <button className="flex-1 border border-red-500 text-red-500 hover:bg-red-50 font-semibold py-2.5 rounded-lg transition">
+                  Regenerate
+                </button>
+              </div>
             </div>
           )}
         </div>
