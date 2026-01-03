@@ -15,7 +15,7 @@ const Profile = () => {
       </div>
 
       {/* HR Profile Card */}
-      <div className="max-w-5xl mx-auto bg-[#1e2a48] rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-lg">
+      <div className="max-w-6xl mx-auto bg-[#1e2a48] rounded-2xl p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 shadow-lg">
         {/* Image */}
         <img
           src="https://avatars.githubusercontent.com/u/120777911?s=400&u=7dd231d3ccd818bbad615fa4fb67dfeb6e786bca&v=4" // replace with your own image
@@ -27,7 +27,7 @@ const Profile = () => {
         <div className=" flex-1 relative">
           <h4 className="text-2xl text-gray-400 mb-1">Aman asthana</h4>
           <h3 className="text-sm font-bold mb-4">Full stack developer</h3>
-          <p className="  mb-8 text-gray-300 text-sm leading-relaxed">
+         <p className="mb-8 text-gray-300 text-sm leading-relaxed max-w-[730px]">
             Aman Asthana is a passionate full-stack developer and product
             builder, currently a third-year student with a strong focus on
             modern web technologies. He’s the creator of Genify — an AI-powered

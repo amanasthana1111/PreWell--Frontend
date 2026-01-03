@@ -4,7 +4,7 @@ import axios from "axios";
 import Subscription from "./Subscription";
 import { Link } from "react-router-dom";
 import BlurComponent from "./BlurLoading";
-import Graph from "./Graph";
+
 import { useNavigate } from "react-router-dom";
 
 const Ats = () => {
@@ -32,7 +32,7 @@ const Ats = () => {
           setResumeUploaded(true);
           setAccess(false);
         } else {
-          navigator("/");
+          navigate("/");
           setResumeUploaded(false);
         }
       }
@@ -219,22 +219,6 @@ const Ats = () => {
                 ))}
               </ul>
             </div>
-            {/* {ats?.graph_data && (
-              <Graph
-                skillsChartData={Object.entries(
-                  ats.graph_data.skills_distribution
-                ).map(([name, value]) => ({
-                  name,
-                  value,
-                }))}
-                atsChartData={Object.entries(ats.graph_data.ats_breakdown).map(
-                  ([name, value]) => ({
-                    name,
-                    value,
-                  })
-                )}
-              />
-            )} */}
           </>
         )}
       </div>

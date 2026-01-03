@@ -15,6 +15,7 @@ import MyAccount from "./components/BeforeAuth/MyAccount.jsx";
 import NoPageFound from "./components/BeforeAuth/NoPageFound.jsx"
 import PaymentPage from "./components/BeforeAuth/PaymentPage.jsx";
 import Subscription from "./components/BeforeAuth/Subscription.jsx";
+import Song from "./components/BeforeAuth/Song.jsx";
 function App() {
   return (
     <>
@@ -41,6 +42,7 @@ function App() {
         
         <Route path="/preview" element={<PrivewRout/>}></Route> */}
       </Routes>
+      <Song></Song>
       <Footer></Footer>
     </>
   );
