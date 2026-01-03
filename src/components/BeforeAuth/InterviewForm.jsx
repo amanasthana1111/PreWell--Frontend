@@ -17,11 +17,10 @@ export const InterviewForm = () => {
   const [isResumeUploaded, setResumeUploaded] = useState(null);
   const [Questions, setQuestion] = useState(null);
   const [access, setAccess] = useState(null);
-  const [finalobj , setObj] = useState({})
+  const [finalobj, setObj] = useState({});
   const [UserAnswer, setUserAnswer] = useState({
     question: [],
   });
-
 
   const [err, setErr] = useState("");
 
@@ -57,13 +56,16 @@ export const InterviewForm = () => {
 
       setQuestion(response.data);
       setLoading(false);
-      setObj["Questions"] = response?.data?.questions;
+      setObj((prev) => ({
+        ...prev,
+        Questions: response?.data?.questions,
+      }));
       setResumeUploaded(true);
       setAccess(true);
     } catch (error) {
       const message = error?.response?.data?.message;
       if (message === "Free limit reached. Please upgrade your plan.") {
-        setResumeUploaded(true); 
+        setResumeUploaded(true);
         setAccess(false);
       } else {
         setAccess(false);
@@ -74,8 +76,16 @@ export const InterviewForm = () => {
     }
   };
   const sumitAns = () => {
-    setObj["answer"] = UserAnswer
-    console.log(finalobj)
+   setObj((prev) => {
+    const updated = {
+      ...prev,
+      answer: UserAnswer,
+    };
+
+    console.log(updated); 
+    return updated;
+  });
+
   };
   if (hasSubmitted && isResumeUploaded === null) {
     return <BlurComponent />;
