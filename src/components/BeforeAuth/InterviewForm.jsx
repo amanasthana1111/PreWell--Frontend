@@ -71,20 +71,21 @@ export const InterviewForm = () => {
         setResumeUploaded(false);
         setAccess(null);
       }
-    } finally {
-      setLoading(false);
     }
   };
   const sumitAns = () => {
-    setObj((prev) => {
-      const updated = {
-        ...prev,
-        answer: UserAnswer,
-      };
-      console.log(finalobj);
-    });
-    alert("Record set . Result page soon i made")
-  };
+  setObj((prev) => {
+    const updated = {
+      ...prev,
+      answer: UserAnswer.question, // store array, not whole object
+    };
+    console.log(updated); // correct log
+    return updated;       // 🔥 REQUIRED
+  });
+
+  alert("Record set. Result page coming soon");
+};
+
   if (hasSubmitted && isResumeUploaded === null) {
     return <BlurComponent />;
   }
