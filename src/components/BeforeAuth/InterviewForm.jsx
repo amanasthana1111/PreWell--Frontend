@@ -170,13 +170,13 @@ export const InterviewForm = () => {
           )}
 
           {hasSubmitted && isResumeUploaded && Questions && (
-            <div className="bg-white rounded-2xl shadow-lg p-6 space-y-6">
+            <div className=" mt-12 bg-[#FAF4F3] rounded-2xl shadow-lg p-6 space-y-6">
               <h2 className="text-2xl font-bold text-gray-900 border-b pb-3">
                 Interview Questions
               </h2>
 
               <div className="space-y-5">
-                {Questions?.question?.map((ques, index) => (
+                {Questions?.questions?.map((ques, index) => (
                   <div
                     key={index}
                     className="rounded-xl border border-gray-200 p-5 hover:shadow-md transition"
