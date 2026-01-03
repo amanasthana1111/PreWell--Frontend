@@ -19,7 +19,7 @@ export const InterviewForm = () => {
   const [access, setAccess] = useState(null);
   const [finalobj, setObj] = useState({});
   const [UserAnswer, setUserAnswer] = useState({
-    question: [],
+    answer: [],
   });
 
   const [err, setErr] = useState("");
@@ -76,16 +76,13 @@ export const InterviewForm = () => {
     }
   };
   const sumitAns = () => {
-   setObj((prev) => {
-    const updated = {
-      ...prev,
-      answer: UserAnswer,
-    };
-
-    console.log(updated); 
-    return updated;
-  });
-
+    setObj((prev) => {
+      const updated = {
+        ...prev,
+        answer: UserAnswer,
+      };
+    });
+    alert("Record set . Result page soon i made")
   };
   if (hasSubmitted && isResumeUploaded === null) {
     return <BlurComponent />;
