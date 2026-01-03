@@ -17,9 +17,11 @@ export const InterviewForm = () => {
   const [isResumeUploaded, setResumeUploaded] = useState(null);
   const [Questions, setQuestion] = useState(null);
   const [access, setAccess] = useState(null);
+  const [finalobj , setObj] = useState({})
   const [UserAnswer, setUserAnswer] = useState({
     question: [],
   });
+
 
   const [err, setErr] = useState("");
 
@@ -55,6 +57,7 @@ export const InterviewForm = () => {
 
       setQuestion(response.data);
       setLoading(false);
+      setObj["Questions"] = response?.data?.questions;
       setResumeUploaded(true);
       setAccess(true);
     } catch (error) {
@@ -71,7 +74,8 @@ export const InterviewForm = () => {
     }
   };
   const sumitAns = () => {
-    console.log(UserAnswer);
+    setObj["answer"] = UserAnswer
+    console.log(finalobj)
   };
   if (hasSubmitted && isResumeUploaded === null) {
     return <BlurComponent />;
@@ -82,10 +86,10 @@ export const InterviewForm = () => {
   }
 
   return (
-    <div className="bg-[#FAF4F3] min-h-screen bg-gray-50 px-4 py-10">
+    <div className="bg-[#FAF4F3] min-h-screen px-4 py-10">
       <div className="max-w-xl mx-auto">
         {/* LEFT: FORM */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-[#FAF4F3]  rounded-2xl shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 text-center">
             Instruct AI
           </h2>

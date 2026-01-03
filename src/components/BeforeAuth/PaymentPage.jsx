@@ -51,6 +51,7 @@ export default function PaymentPage() {
           withCredentials: true,
         }
       );
+      alert("Payment Done . Redirection to Home")
       navigate("/")
       } catch (error) {
      navigate("/")

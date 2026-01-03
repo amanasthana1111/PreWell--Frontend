@@ -1,6 +1,6 @@
 export default function BlurComponent() {
   return (
-    <div className="relative w-screen h-screen flex items-center justify-center bg-sky-50 overflow-hidden">
+    <div className="relative w-screen h-screen flex items-center justify-center bg-[#FAF4F3] overflow-hidden">
       
       {/* Blurred background image */}
       <img
