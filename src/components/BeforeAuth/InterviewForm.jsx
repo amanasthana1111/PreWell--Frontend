@@ -56,10 +56,10 @@ export const InterviewForm = () => {
 
       setQuestion(response.data);
       setLoading(false);
-      setObj((prev) => ({
-        ...prev,
-        Questions: response?.data?.questions,
-      }));
+      // setObj((prev) => ({
+      //   ...prev,
+      //   Questions: response?.data?.questions,
+      // }));
       setResumeUploaded(true);
       setAccess(true);
     } catch (error) {
@@ -68,8 +68,8 @@ export const InterviewForm = () => {
         setResumeUploaded(true);
         setAccess(false);
       } else {
+         setResumeUploaded(false);
         setAccess(false);
-        setResumeUploaded(false);
       }
     } finally {
       setLoading(false);
