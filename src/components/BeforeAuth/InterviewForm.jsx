@@ -61,13 +61,15 @@ export const InterviewForm = () => {
     } catch (error) {
       const message = error?.response?.data?.message;
       if (message === "Free limit reached. Please upgrade your plan.") {
-        setResumeUploaded(true);
+        setLoading(false)
         setAccess(false);
       } else {
         navigate("/");
         setResumeUploaded(false);
       }
-      setLoading(false);
+      
+    } finally{
+        setLoading(false);
     }
   };
   const sumitAns = ()=>{
