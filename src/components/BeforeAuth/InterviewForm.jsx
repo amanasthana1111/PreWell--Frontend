@@ -19,7 +19,7 @@ export const InterviewForm = () => {
   const [access, setAccess] = useState(null);
   const [finalobj, setObj] = useState({});
   const [UserAnswer, setUserAnswer] = useState({
-    answer: [],
+    question: [],
   });
 
   const [err, setErr] = useState("");
@@ -222,7 +222,7 @@ export const InterviewForm = () => {
                     <input
                       type="text"
                       placeholder="Type your answer here..."
-                      value={UserAnswer?.questions?.[index]}
+                      value={UserAnswer?.question?.[index]}
                       onChange={(e) =>
                         handleAnswerChange(index, e.target.value)
                       }
