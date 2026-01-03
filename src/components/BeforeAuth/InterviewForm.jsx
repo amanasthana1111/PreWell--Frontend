@@ -221,7 +221,7 @@ export const InterviewForm = () => {
                     <input
                       type="text"
                       placeholder="Type your answer here..."
-                      value={UserAnswer?.question[index]}
+                      value={UserAnswer?.questions[index]}
                       onChange={(e) =>
                         handleAnswerChange(index, e.target.value)
                       }
