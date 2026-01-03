@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 import Subscription from "./Subscription";
 import BlurComponent from "./BlurLoading";
 
@@ -12,7 +12,6 @@ export const InterviewForm = () => {
     difficulty: "easy",
     no_of_Q: 10,
   });
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isResumeUploaded, setResumeUploaded] = useState(null);
@@ -64,7 +63,6 @@ export const InterviewForm = () => {
         setLoading(false);
         setAccess(false);
       } else {
-        navigate("/");
         setResumeUploaded(false);
       }
     } finally {
