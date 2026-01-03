@@ -18,6 +18,9 @@ export const InterviewForm = () => {
   const [isResumeUploaded, setResumeUploaded] = useState(null);
   const [Questions, setQuestion] = useState(null);
   const [access, setAccess] = useState(null);
+  const [UserAnswer, setUserAns] = useState({
+    question: [],
+  });
 
   const [err, setErr] = useState("");
 
@@ -27,6 +30,14 @@ export const InterviewForm = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleAnswerChange = (index, value) => {
+    setUserAnswer((prev) => {
+      const updated = [...prev.question];
+      updated[index] = value;
+      return { question: updated };
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -41,7 +52,7 @@ export const InterviewForm = () => {
         "https://prewell-backend-2.onrender.com/start/interview",
         userQ,
         { withCredentials: true }
-      ); 
+      );
 
       setQuestion(response.data);
       setLoading(false);
@@ -59,6 +70,9 @@ export const InterviewForm = () => {
       setLoading(false);
     }
   };
+  const sumitAns = ()=>{
+    console.log(UserAnswer)
+  }
   if (hasSubmitted && isResumeUploaded === null) {
     return <BlurComponent />;
   }
@@ -196,6 +210,10 @@ export const InterviewForm = () => {
                     <input
                       type="text"
                       placeholder="Type your answer here..."
+                      value={UserAnswer.question[index] || ""}
+                      onChange={(e) =>
+                        handleAnswerChange(index, e.target.value)
+                      }
                       className="mt-4 w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:ring-2 focus:ring-red-500 focus:outline-none"
                     />
                   </div>
@@ -204,11 +222,8 @@ export const InterviewForm = () => {
 
               {/* Action Buttons */}
               <div className="flex gap-4 pt-4 border-t">
-                <button className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition">
+                <button onClick={sumitAns} className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition">
                   Submit Answers
-                </button>
-                <button className="flex-1 border border-red-500 text-red-500 hover:bg-red-50 font-semibold py-2.5 rounded-lg transition">
-                  Regenerate
                 </button>
               </div>
             </div>

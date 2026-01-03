@@ -12,16 +12,6 @@ export default function BlurComponent() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
 
-      {/* Star loading animation */}
-      <div className="relative z-10 flex flex-col items-center">
-        <div className="text-6xl text-red-500 animate-float">
-          ☆
-        </div>
-
-        <p className="mt-4 text-gray-700 font-medium tracking-wide">
-          Loading...
-        </p>
-      </div>
 
       {/* Custom animation */}
       <style>
