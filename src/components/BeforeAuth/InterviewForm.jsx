@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import Subscription from "./Subscription";
 import BlurComponent from "./BlurLoading";
 
@@ -12,7 +12,7 @@ export const InterviewForm = () => {
     difficulty: "easy",
     no_of_Q: 10,
   });
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isResumeUploaded, setResumeUploaded] = useState(null);
@@ -61,20 +61,19 @@ export const InterviewForm = () => {
     } catch (error) {
       const message = error?.response?.data?.message;
       if (message === "Free limit reached. Please upgrade your plan.") {
-        setLoading(false)
+        setLoading(false);
         setAccess(false);
       } else {
         navigate("/");
         setResumeUploaded(false);
       }
-      
-    } finally{
-        setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
-  const sumitAns = ()=>{
-    console.log(UserAnswer)
-  }
+  const sumitAns = () => {
+    console.log(UserAnswer);
+  };
   if (hasSubmitted && isResumeUploaded === null) {
     return <BlurComponent />;
   }
@@ -224,7 +223,10 @@ export const InterviewForm = () => {
 
               {/* Action Buttons */}
               <div className="flex gap-4 pt-4 border-t">
-                <button onClick={sumitAns} className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition">
+                <button
+                  onClick={sumitAns}
+                  className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition"
+                >
                   Submit Answers
                 </button>
               </div>
