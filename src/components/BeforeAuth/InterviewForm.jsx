@@ -81,6 +81,7 @@ export const InterviewForm = () => {
         ...prev,
         answer: UserAnswer,
       };
+      console.log(finalobj);
     });
     alert("Record set . Result page soon i made")
   };
