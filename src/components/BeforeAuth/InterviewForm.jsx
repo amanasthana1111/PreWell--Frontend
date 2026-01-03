@@ -60,7 +60,6 @@ export const InterviewForm = () => {
     } catch (error) {
       const message = error?.response?.data?.message;
       if (message === "Free limit reached. Please upgrade your plan.") {
-        setLoading(false);
         setAccess(false);
       } else {
         setResumeUploaded(false);
@@ -81,7 +80,7 @@ export const InterviewForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
+    <div className="bg-[#FAF4F3] min-h-screen bg-gray-50 px-4 py-10">
       <div className="max-w-xl mx-auto">
         {/* LEFT: FORM */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
