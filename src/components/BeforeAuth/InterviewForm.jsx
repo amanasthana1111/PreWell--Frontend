@@ -17,7 +17,7 @@ export const InterviewForm = () => {
   const [isResumeUploaded, setResumeUploaded] = useState(null);
   const [Questions, setQuestion] = useState(null);
   const [access, setAccess] = useState(null);
-  const [UserAnswer, setUserAns] = useState({
+  const [UserAnswer, setUserAnswer] = useState({
     question: [],
   });
 
@@ -164,7 +164,7 @@ export const InterviewForm = () => {
 
         {/* RIGHT: RESULT / STATES */}
 
-        <div className="flex items-center justify-center">
+        <div className=" mt-4 flex items-center justify-center">
           {hasSubmitted && isResumeUploaded === false && (
             <div className="text-center bg-white p-8 rounded-2xl shadow-lg">
               <h1 className="text-2xl font-bold text-gray-900 mb-2">
