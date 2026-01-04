@@ -1,3 +1,4 @@
+import img from "./assets/Resumstoportfoilo.png"
 const About = () => {
   return (
     <section className="bg-[#FAF4F3] py-20 px-6 lg:px-12">
@@ -37,8 +38,13 @@ const About = () => {
             </ul>
           </div>
 
-          {/* Right Side (future image / illustration placeholder) */}
-          {/* You can add an image or illustration here later */}
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <img
+              src={img}
+              alt="Resumstoportfoilo img"
+              className="max-w-full h-auto rounded-lg"
+            />
+          </div>
         </div>
 
         {/* Bottom Stats */}

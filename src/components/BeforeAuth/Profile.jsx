@@ -40,7 +40,7 @@ const Profile = () => {
 
           {/* LinkedIn Icon */}
           <a
-            href="https://www.linkedin.com/in/amanasthanacse" // replace with real profile
+            href="https://www.linkedin.com/in/amanasthanacse" 
             target="_blank"
             rel="noopener noreferrer"
             className="absolute top-0 right-0 p-2 text-white bg-[#0b1431] rounded-lg hover:bg-[#253256] transition"
@@ -48,7 +48,7 @@ const Profile = () => {
             <FaLinkedin size={20} />
           </a>
           <a
-            href="https://github.com/amanasthana1111" // Replace with your GitHub profile
+            href="https://github.com/amanasthana1111" 
             target="_blank"
             rel="noopener noreferrer"
             className="absolute top-12 right-0 p-2 text-white bg-[#0b1431] rounded-lg hover:bg-[#253256] transition"
@@ -57,7 +57,7 @@ const Profile = () => {
           </a>
 
           <a
-            href="https://x.com/aman_dev12" // Replace with your X/Twitter profile
+            href="https://x.com/aman_dev12" 
             target="_blank"
             rel="noopener noreferrer"
             className="absolute top-24 right-0 p-2 text-white bg-[#0b1431] rounded-lg hover:bg-[#253256] transition"

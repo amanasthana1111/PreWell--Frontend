@@ -37,7 +37,7 @@ export default function Banner() {
       </div>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <p className="text-sm/6 text-gray-900">
-          <strong className="font-semibold">Folify 2025</strong>
+          <strong className="font-semibold">Folify 2026</strong>
           <svg
             viewBox="0 0 2 2"
             aria-hidden="true"
@@ -45,7 +45,7 @@ export default function Banner() {
           >
             <circle r={1} cx={1} cy={1} />
           </svg>
-          Made with ❤️  by Aman Asthana — discover flavor with every bite.  
+          Made with ❤️ by Aman Asthana — crafted for taste, always free. 
         </p>
         
         <Link
