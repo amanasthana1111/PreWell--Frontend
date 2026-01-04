@@ -67,7 +67,7 @@ const Footer = () => {
               <FaGithub />
             </a>
             <a
-              href="https://x.com/dev_aman12"
+              href="https://x.com/aman_dev12"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-600"

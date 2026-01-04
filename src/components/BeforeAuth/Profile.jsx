@@ -57,7 +57,7 @@ const Profile = () => {
           </a>
 
           <a
-            href="https://x.com/dev_aman12" // Replace with your X/Twitter profile
+            href="https://x.com/aman_dev12" // Replace with your X/Twitter profile
             target="_blank"
             rel="noopener noreferrer"
             className="absolute top-24 right-0 p-2 text-white bg-[#0b1431] rounded-lg hover:bg-[#253256] transition"

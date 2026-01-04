@@ -14,6 +14,7 @@ const Navbar = () => {
         { withCredentials: true }
       );
       logout();
+      alert("Logout Success . Redirecting in Home")
       navigate("/");
     } catch (error) {
       console.error("Logout failed", error);
