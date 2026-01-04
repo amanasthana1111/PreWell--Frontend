@@ -5,14 +5,12 @@ import Subscription from "./Subscription";
 import { Link } from "react-router-dom";
 import BlurComponent from "./BlurLoading";
 
-import { useNavigate } from "react-router-dom";
 
 const Ats = () => {
   const isAuth = useUserAuth();
   const [isResumeUploaded, setResumeUploaded] = useState(null);
   const [ats, setAts] = useState(null);
   const [access, setAccess] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const check = async () => {
@@ -32,7 +30,6 @@ const Ats = () => {
           setResumeUploaded(true);
           setAccess(false);
         } else {
-          navigate("/");
           setResumeUploaded(false);
         }
       }

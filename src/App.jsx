@@ -16,6 +16,7 @@ import NoPageFound from "./components/BeforeAuth/NoPageFound.jsx"
 import PaymentPage from "./components/BeforeAuth/PaymentPage.jsx";
 import Subscription from "./components/BeforeAuth/Subscription.jsx";
 import Song from "./components/BeforeAuth/Song.jsx";
+import Report from "./components/BeforeAuth/Report.jsx";
 function App() {
   return (
     <>
@@ -34,6 +35,7 @@ function App() {
         <Route path="/my-account" element={<MyAccount></MyAccount>}></Route>
         <Route path="/payment" element={<PaymentPage/>}></Route>
         <Route path="/subscription" element={<Subscription/>}></Route>
+        <Route path="/report" element={<Report/>}></Route>
         <Route path="*" element={<NoPageFound></NoPageFound>}></Route>
 
 

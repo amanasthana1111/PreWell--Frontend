@@ -39,7 +39,9 @@ const login = async () => {
     setIsAuth(true);
     setRes(response.data);
   } catch (err) {
-    console.error("Login auth check failed", err);
+    setIsAuth(false);
+    console.error("Login auth check failed", + err);
+    
   }
 };
 
