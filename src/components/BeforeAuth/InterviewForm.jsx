@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Loading from "./Loading";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Subscription from "./Subscription";
 import BlurComponent from "./BlurLoading";
 
 export const InterviewForm = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [userQ, setUserQ] = useState({
     instruction: "",
     difficulty: "easy",
@@ -75,17 +75,20 @@ export const InterviewForm = () => {
     }
   };
   const sumitAns = () => {
-    setObj((prev) => {
-      const updated = {
-        ...prev,
-        answer: UserAnswer.question, // store array, not whole object
-      };
-      console.log(updated);
-       alert("Record set. Result page coming soon");
-    navigate("/report", { state: finalobj });
-    });
+    const updated = {
+      ...finalobj,
+      answers: UserAnswer.question,
+    };
 
-    
+    setObj(updated);
+
+    alert("Record set. Result page coming soon");
+
+    navigate("/report", {
+      state: {
+        interviewData: updated,
+      },
+    });
   };
 
   if (hasSubmitted && isResumeUploaded === null) {
@@ -225,7 +228,7 @@ export const InterviewForm = () => {
                     <input
                       type="text"
                       placeholder="Type your answer here..."
-                      value={UserAnswer?.question?.[index]}
+                      value={UserAnswer?.question?.[index] || ""}
                       onChange={(e) =>
                         handleAnswerChange(index, e.target.value)
                       }

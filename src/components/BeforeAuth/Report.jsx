@@ -4,11 +4,14 @@ import useUserAuth from "./hooks/useAuth";
 
 const Report = () => {
   const isAuth = useUserAuth();
-    const { state } = useLocation();
   if (isAuth === null) {
     return <div>Loading...</div>;
   }
-  console.log(state);
+  const { state } = useLocation();
+  const { interviewData } = state || {};
+
+  console.log(interviewData);
+
   return <div>Report</div>;
 };
 
