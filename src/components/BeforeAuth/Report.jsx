@@ -8,7 +8,7 @@ const Report = () => {
   if (isAuth === null) {
     return <div>Loading...</div>;
   }
-  console.log(state);
+  // console.log(state);
   return <div>Report</div>;
 };
 
