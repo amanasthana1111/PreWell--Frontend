@@ -1,4 +1,5 @@
-import img from "./assets/Resumstoportfoilo.png"
+
+import video1 from "./assets/video1.mp4"
 const About = () => {
   return (
     <section className="bg-[#FAF4F3] py-20 px-6 lg:px-12">
@@ -38,12 +39,17 @@ const About = () => {
             </ul>
           </div>
 
-          <div className="w-full lg:w-1/2 flex justify-center">
-            <img
-              src={img}
-              alt="Resumstoportfoilo img"
-              className="max-w-full h-auto rounded-lg"
-            />
+          <div className="lg:w-1/2">
+            <video
+              className="rounded-xl shadow-lg w-full h-auto"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src={video1} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 
