@@ -74,6 +74,8 @@ export const InterviewForm = () => {
       }
     }
   };
+
+
   const sumitAns = () => {
     const updated = {
       ...finalobj,
