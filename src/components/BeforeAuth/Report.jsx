@@ -1,16 +1,22 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import useUserAuth from "./hooks/useAuth";
+import NoPageFound from "./NoPageFound";
 
 const Report = () => {
   const isAuth = useUserAuth();
+  const { state } = useLocation();
   if (isAuth === null) {
     return <div>Loading...</div>;
   }
-  const { state } = useLocation();
+  
   const { interviewData } = state || {};
+  if(interviewData === undefined || {}){
+    return <NoPageFound/>
+  }
+  
 
-  console.log(interviewData);
+  
 
   return <div>Report</div>;
 };
