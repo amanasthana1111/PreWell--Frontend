@@ -32,7 +32,7 @@ const Login = () => {
       setLoading(true);
 
       const response = await axios.post(
-        "https://prewell-backend-2.onrender.com/api/login",
+        "https://folify.onrender.com/api/login",
         user,
         { withCredentials: true }
       );

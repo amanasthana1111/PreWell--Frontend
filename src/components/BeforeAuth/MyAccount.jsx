@@ -44,7 +44,7 @@ function MyAccount() {
       formData.append("file", resume);
 
       const response = await axios.post(
-        "https://prewell-backend-2.onrender.com/resumes/upload",
+        "https://folify.onrender.com/resumes/upload",
         formData,
         {
           withCredentials: true,

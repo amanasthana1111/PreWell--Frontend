@@ -50,7 +50,7 @@ export const InterviewForm = () => {
       setErr("");
 
       const response = await axios.post(
-        "https://prewell-backend-2.onrender.com/start/interview",
+        "https://folify.onrender.com/start/interview",
         userQ,
         { withCredentials: true }
       );

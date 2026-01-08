@@ -27,7 +27,7 @@ const SignUp = () => {
     try {
       setLoading(true);
       await axios.post(
-        "https://prewell-backend-2.onrender.com/api/register",
+        "https://folify.onrender.com/api/register",
         user
       );
       setIsDone(true);

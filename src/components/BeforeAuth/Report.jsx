@@ -14,12 +14,13 @@ const Report = () => {
 
   const interviewData = state?.interviewData;
   useEffect(() => {
+    if (isAuth === null || !interviewData) return;
     const reportAi = async () => {
-      if (isAuth === null || !interviewData) return;
+      
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://prewell-backend-2.onrender.com/api/google",
+          "https://folify.onrender.com/api/google",
           interviewData,
           { withCredentials: true }
         );

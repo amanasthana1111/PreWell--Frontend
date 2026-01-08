@@ -40,7 +40,7 @@ export default function PaymentPage() {
       try {
         console.log("Payment verified for plan:", plan);
       const response = await axios.post(
-        "https://prewell-backend-2.onrender.com/user/buy",
+        "https://folify.onrender.com/user/buy",
         {
           firstNo: num1,
           secondNo: num2,

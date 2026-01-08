@@ -16,7 +16,7 @@ const Ats = () => {
     const check = async () => {
       try {
         const response = await axios.get(
-          "https://prewell-backend-2.onrender.com/start/atsScanner",
+          "https://folify.onrender.com/start/atsScanner",
           { withCredentials: true }
         );
 

@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       try {
         const response = await axios.get(
-          "https://prewell-backend-2.onrender.com/api/auth",
+          "https://folify.onrender.com/api/auth",
           { withCredentials: true }
         );
 
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 const login = async () => {
   try {
     const response = await axios.get(
-      "https://prewell-backend-2.onrender.com/api/auth",
+      "https://folify.onrender.com/api/auth",
       { withCredentials: true }
     );
     setIsAuth(true);

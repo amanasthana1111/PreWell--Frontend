@@ -9,7 +9,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await axios.get(
-        "https://prewell-backend-2.onrender.com/api/logout",
+        "https://folify.onrender.com/api/logout",
         { withCredentials: true }
       );
       logout();
