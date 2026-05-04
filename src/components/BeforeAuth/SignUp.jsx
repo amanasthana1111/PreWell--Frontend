@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Loading from "./Loading";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -31,6 +32,8 @@ const SignUp = () => {
         user
       );
       setIsDone(true);
+      setTimeout()
+      navigate("/login");
     } catch (error) {
       try {
         const zodString = error.response.data.message.message;
