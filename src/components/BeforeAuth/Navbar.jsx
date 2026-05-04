@@ -33,6 +33,8 @@ const Navbar = () => {
         <li><Link to="/how-it-works">How It Works</Link></li>
         <li><Link to={isAuth ? "/interview-prep" : "/login"}>Interview Prep</Link></li>
         <li><Link to={isAuth ? "/ats-resume-checker" : "/login"}>ATS Checker</Link></li>
+        <li><Link to={isAuth ? "/resume-comparer" : "/login"}>Compare Resumes</Link></li>
+        <li><Link to={isAuth ? "/leaderboard" : "/login"}>Leaderboard</Link></li>
         <li><Link to={isAuth ? "/portfolio-builder" : "/login"}>Portfolio Builder</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/about">About</Link></li>

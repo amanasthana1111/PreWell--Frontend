@@ -17,6 +17,8 @@ import PaymentPage from "./components/BeforeAuth/PaymentPage.jsx";
 import Subscription from "./components/BeforeAuth/Subscription.jsx";
 import Song from "./components/BeforeAuth/Song.jsx";
 import Report from "./components/BeforeAuth/Report.jsx";
+import ResumeComparer from "./components/BeforeAuth/ResumeComparer.jsx";
+import Leaderboard from "./components/BeforeAuth/Leaderboard.jsx";
 function App() {
   return (
     <>
@@ -36,6 +38,8 @@ function App() {
         <Route path="/payment" element={<PaymentPage/>}></Route>
         <Route path="/subscription" element={<Subscription/>}></Route>
         <Route path="/report" element={<Report/>}></Route>
+        <Route path="/resume-comparer" element={<ResumeComparer/>}></Route>
+        <Route path="/leaderboard" element={<Leaderboard/>}></Route>
         <Route path="*" element={<NoPageFound></NoPageFound>}></Route>
 
 

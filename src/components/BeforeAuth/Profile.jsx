@@ -27,7 +27,7 @@ const Profile = () => {
         <div className=" flex-1 relative">
           <h4 className="text-2xl text-gray-400 mb-1">Aman asthana</h4>
           <h3 className="text-sm font-bold mb-4">Full stack developer</h3>
-         <p className="mb-8 text-gray-300 text-sm leading-relaxed max-w-[730px]">
+         <p className="mb-8 text-gray-300 text-sm leading-relaxed max-w-182.5">
             Aman Asthana is a passionate full-stack developer and product
             builder, currently a third-year student with a strong focus on
             modern web technologies. He’s the creator of Genify — an AI-powered
