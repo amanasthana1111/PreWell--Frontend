@@ -32,7 +32,6 @@ const SignUp = () => {
         user
       );
       setIsDone(true);
-      setTimeout()
       navigate("/login");
     } catch (error) {
       try {
@@ -40,7 +39,7 @@ const SignUp = () => {
         const parsed = JSON.parse(zodString);
         seterr(parsed[0].message); // "Invalid email address"
       } catch {
-        seterr("Signup failed");
+        seterr("Signup failed" ,error);
       }
       setIsDone(false);
     } finally {
