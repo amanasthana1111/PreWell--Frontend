@@ -49,6 +49,14 @@ const Footer = () => {
               <Link to={isAuth ? "/portfolio-builder" :"/login"}>Generate Portfolio website</Link>
             </li>
             <li className="hover:text-red-600 transition-colors">
+              {" "}
+              <Link to={isAuth ? "/resume-comparer" : "/login"}>Compare Resumes</Link>
+            </li>
+            <li className="hover:text-red-600 transition-colors">
+              {" "}
+              <Link to={isAuth ? "/leaderboard" : "/login"}>Leaderboard</Link>
+            </li>
+            <li className="hover:text-red-600 transition-colors">
               
               <Link to={isAuth ? "/interview-prep" :"/login"}>Interview Prep</Link>
             </li>

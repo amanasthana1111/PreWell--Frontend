@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/BeforeAuth/Home.jsx";
 import Navbar from "./components/BeforeAuth/Navbar.jsx";
 import Banner from "./components/BeforeAuth/Banner.jsx";
@@ -19,9 +19,11 @@ import Song from "./components/BeforeAuth/Song.jsx";
 import Report from "./components/BeforeAuth/Report.jsx";
 import ResumeComparer from "./components/BeforeAuth/ResumeComparer.jsx";
 import Leaderboard from "./components/BeforeAuth/Leaderboard.jsx";
+import ScrollToTop from "./components/BeforeAuth/ScrollToTop.jsx";
 function App() {
   return (
     <>
+      <ScrollToTop></ScrollToTop>
       <Navbar></Navbar>
       <Banner></Banner>
       <Routes>
