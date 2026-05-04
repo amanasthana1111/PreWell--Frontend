@@ -4,12 +4,17 @@ import axios from "axios";
 import Subscription from "./Subscription";
 import BlurComponent from "./BlurLoading";
 import atsImage from "./assets/Resumstoportfoilo.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Ats = () => {
   const isAuth = useUserAuth();
-  const [isResumeUploaded, setResumeUploaded] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const shouldRunAfterPayment = location.state?.runAtsAfterPayment === true;
+  const [isResumeUploaded, setResumeUploaded] = useState(false);
   const [ats, setAts] = useState(null);
-  const [access, setAccess] = useState(null);
+  const [access, setAccess] = useState(true);
+  const [checkingAts, setCheckingAts] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
 
@@ -40,14 +45,26 @@ const Ats = () => {
 
   const checkAtsScanner = async () => {
     try {
+      setCheckingAts(true);
+      setUploadError("");
       const response = await axios.get(
         "https://folify.onrender.com/start/atsScanner",
         { withCredentials: true }
       );
 
-      setResumeUploaded(true);
-      setAts(response.data);
+      const atsResult = response.data?.data ?? response.data?.ats ?? response.data;
+
+      if (!atsResult || (!atsResult.final_verdict && atsResult.ats_score == null)) {
+        setResumeUploaded(false);
+        setAts(null);
+        setAccess(true);
+        setUploadError("Please upload a resume before running ATS analysis.");
+        return;
+      }
+
+      setAts(atsResult);
       setAccess(true);
+      setResumeUploaded(true);
     } catch (error) {
       const message = error?.response?.data?.message;
 
@@ -57,13 +74,22 @@ const Ats = () => {
       } else {
         setResumeUploaded(false);
         setAts(null);
+        setAccess(true);
+        setUploadError(message || "Please upload a resume before running ATS analysis.");
       }
+    } finally {
+      setCheckingAts(false);
     }
   };
 
   useEffect(() => {
-    checkAtsScanner();
-  }, []);
+    if (isAuth && shouldRunAfterPayment) {
+      checkAtsScanner();
+      navigate(location.pathname, { replace: true, state: null });
+    }
+  }, [isAuth, shouldRunAfterPayment, navigate, location.pathname]);
+
+  const formatScore = (value) => (value == null ? "Not available" : `${value}%`);
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -90,10 +116,13 @@ const Ats = () => {
         },
       });
 
+      setResumeUploaded(true);
       await checkAtsScanner();
     } catch (error) {
       console.error(error);
       setUploadError("Resume upload failed. Please try again.");
+      setResumeUploaded(false);
+      setAts(null);
     } finally {
       setUploading(false);
     }
@@ -109,12 +138,12 @@ const Ats = () => {
 
   if (!isAuth) return null;
 
-  if (isResumeUploaded === null) {
+  if (checkingAts) {
     return <BlurComponent />;
   }
 
   if (access === false) {
-    return <Subscription />;
+    return <Subscription returnTo="/ats-resume-checker" />;
   }
 
   return (
@@ -197,7 +226,9 @@ const Ats = () => {
                   className="bg-[#FAF4F3] rounded-xl p-4 text-center"
                 >
                   <p className="text-sm text-gray-600">{label}</p>
-                  <p className="text-2xl font-bold text-gray-900">{value}%</p>
+                  <p className="text-2xl font-bold text-gray-900">
+                    {formatScore(value)}
+                  </p>
                 </div>
               ))}
             </div>

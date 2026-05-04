@@ -2,36 +2,35 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+const randomNumber = () => Math.floor(Math.random() * 100) + 1;
+
 export default function PaymentPage() {
   const navigate = useNavigate();
   const { state } = useLocation();
-  
-  useEffect(() => {
-  if (!state) {
-    setTimeout(() => navigate("/subscription"), 3000);
-  }
-}, [state]);
-
 
   // plan details
   const plan = state?.plan || "starter";
   const price = state?.price || 10;
+  const returnTo = state?.returnTo || "/";
 
-  const [num1, setNum1] = useState(0);
-  const [num2, setNum2] = useState(0);
+  const [num1, setNum1] = useState(randomNumber);
+  const [num2, setNum2] = useState(randomNumber);
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    generateNumbers();
-  }, []);
-
-  const generateNumbers = () => {
-    setNum1(Math.floor(Math.random() * 100) + 1);
-    setNum2(Math.floor(Math.random() * 100) + 1);
+  function generateNumbers() {
+    setNum1(randomNumber());
+    setNum2(randomNumber());
     setAnswer("");
     setError("");
-  };
+  }
+
+  useEffect(() => {
+    if (!state) {
+      const timer = setTimeout(() => navigate("/subscription"), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [state, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,22 +38,29 @@ export default function PaymentPage() {
     if (parseInt(answer) === num1 + num2) {
       try {
         console.log("Payment verified for plan:", plan);
-      const response = await axios.post(
-        "https://folify.onrender.com/user/buy",
-        {
-          firstNo: num1,
-          secondNo: num2,
-          sum: parseInt(answer),
-          planAmount: state?.price?.toString(),
-        },
-        {
-          withCredentials: true,
-        }
-      );
-      alert("Payment Done . Redirection to Home")
-      navigate("/")
+        await axios.post(
+          "https://folify.onrender.com/user/buy",
+          {
+            firstNo: num1,
+            secondNo: num2,
+            sum: parseInt(answer),
+            planAmount: price.toString(),
+          },
+          {
+            withCredentials: true,
+          }
+        );
+        alert("Payment done. Redirecting.");
+        navigate(returnTo, {
+          state:
+            returnTo === "/ats-resume-checker"
+              ? { runAtsAfterPayment: true }
+              : null,
+        });
       } catch (error) {
-     navigate("/")
+        setError(
+          error?.response?.data?.message || "Payment failed. Please try again."
+        );
       }
     } else {
       setError("Incorrect sum. Please try again.");

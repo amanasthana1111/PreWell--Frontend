@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import useUserAuth from "./hooks/useAuth";
-export default function Subscription() {
+export default function Subscription({ returnTo = "/" }) {
     const navigate = useNavigate();
     const isAuth = useUserAuth();
 
   const handleSubscribe = (plan,price) => {
     
-    navigate("/payment", { state: { plan: plan , price: price } });
+    navigate("/payment", { state: { plan: plan , price: price, returnTo } });
 
   };
   if (isAuth === null) {

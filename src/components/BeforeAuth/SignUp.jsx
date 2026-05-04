@@ -10,9 +10,9 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-  const [loading, setLoading] = useState(null);
-  const [isDone, setIsDone] = useState(null);
-  const [err, seterr] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+  const [err, seterr] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,21 +25,34 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting:", user);
+    seterr(null);
+    setIsDone(false);
+
     try {
       setLoading(true);
-      await axios.post(
+      const response = await axios.post(
         "https://folify.onrender.com/api/register",
-        user
+        user,
+        {
+          validateStatus: (status) => status >= 200 && status < 300,
+        }
       );
-      setIsDone(true);
-      navigate("/login");
+
+      if (response.status >= 200 && response.status < 300) {
+        setIsDone(true);
+        navigate("/login");
+        return;
+      }
+
+      seterr("Signup failed");
+      setIsDone(false);
     } catch (error) {
       try {
-        const zodString = error.response.data.message.message;
+        const zodString = error.response?.data?.message?.message;
         const parsed = JSON.parse(zodString);
         seterr(parsed[0].message); // "Invalid email address"
       } catch {
-        seterr("Signup failed" ,error);
+        seterr(error.response?.data?.message || "Signup failed");
       }
       setIsDone(false);
     } finally {
@@ -124,12 +137,14 @@ const SignUp = () => {
             </ul>
           </div>
 
-          {loading ? <Loading></Loading> : ""}
-          {isDone ? <p>Sign up Successfull</p> : err}
+          {loading && <Loading />}
+          {isDone && <p className="text-green-600 text-sm">Sign up successful</p>}
+          {err && <p className="text-red-600 text-sm">{err}</p>}
 
           {/* Button */}
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 rounded-lg transition"
           >
             Sign Up
