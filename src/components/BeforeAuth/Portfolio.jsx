@@ -292,7 +292,7 @@ export const Portfolio = () => {
                   <iframe
                     title="Generated portfolio preview"
                     srcDoc={previewDocument}
-                    className="w-full h-[680px] bg-white"
+                    className="w-full h-170 bg-white"
                     sandbox="allow-scripts"
                   />
                 ) : (

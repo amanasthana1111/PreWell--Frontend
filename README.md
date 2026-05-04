@@ -1,243 +1,225 @@
+# Folify - AI Career Preparation Frontend
 
-# 🌟 Folify – AI Career Preparation Platform
+Folify is a React + Vite frontend for an AI-powered career preparation platform. It helps users scan resumes for ATS readiness, generate interview questions, compare resumes, view resume rankings, and create downloadable portfolio websites from PDF resumes.
 
-Folify is a full-stack AI-powered career preparation platform that helps users become job-ready by combining **ATS resume scanning**, **AI interview preparation**, and **AI-generated portfolio websites** in one place.
+## Features
 
----
+- ATS resume scanner
+  - PDF resume upload
+  - ATS score, readability score, keyword match score, and section completeness score
+  - Resume summary, primary stack, missing sections, matched keywords, missing keywords, final verdict, and improvement suggestions
+  - Subscription fallback when the free limit is reached
 
-## 🚀 Features
+- AI interview preparation
+  - Custom instruction input
+  - Difficulty selection: easy, medium, hard
+  - Question count selection: 10, 20, or 30
+  - User answer collection
+  - Interview report generation with overall score, verdict, and English level
 
-- ✅ **ATS Resume Scanner**
-  - Resume score analysis
-  - Keyword matching & missing keyword detection
-  - Section completeness & readability scoring
-  - Actionable AI feedback
+- Portfolio builder
+  - PDF resume upload
+  - AI-generated portfolio website preview
+  - Supports generated HTML, CSS, JavaScript, or file-list responses
+  - Download generated source code as `folify-portfolio.zip`
 
-- ✅ **AI Interview Preparation**
-  - Resume-based interview questions
-  - Mock interview practice
+- Resume comparer
+  - Upload two PDF resumes
+  - Optional job description input
+  - AI comparison for ATS score, strengths, weaknesses, recommendations, and stronger resume
 
-- ✅ **AI Portfolio Website Generator**
-  - Convert resume into a professional portfolio website
+- Resume leaderboard
+  - Authenticated leaderboard page
+  - Ranks users by best ATS score
+  - Shows user profile type, skills, scan count, and score
+  - Uses demo fallback rows if the leaderboard backend is unavailable
 
-- ✅ **Subscription System**
-  - Free & paid plans
-  - Usage-based access control
-  - Math-based verification before payment
+- Authentication and account flow
+  - Signup and login pages
+  - Cookie-based auth checks with `withCredentials: true`
+  - Auth context provider
+  - Auth-gated feature routes
+  - Logout flow
 
-- ✅ **Authentication**
-  - Login / Signup
-  - Protected routes
-  - Cookie-based authentication
+- Subscription and payment flow
+  - Starter, Pro, and Premium plans
+  - Math challenge verification before activating a plan
+  - Redirect handling when payment page is opened without selected plan state
 
-- ✅ **Responsive UI**
-  - Folify custom theme
-  - Tailwind CSS styling
-  - Clean SaaS-style design
+- UI and navigation
+  - Responsive Tailwind CSS interface
+  - Navbar, banner, footer, loading states, and 404 page
+  - Scroll-to-top behavior between routes
+  - Background audio player component
+  - Vercel SPA routing support
 
----
+## Tech Stack
 
-## 🛠 Tech Stack
+- React 19
+- Vite 7
+- Tailwind CSS 4 with `@tailwindcss/vite`
+- React Router DOM 7
+- Axios
+- JSZip
+- File Saver
+- React Audio Player
+- React Icons
+- Heroicons
+- Recharts
+- Styled Components
+- ESLint
 
-### Frontend
-- **React (Vite)**
-- **Tailwind CSS**
-- **React Router DOM**
-- **Axios**
-
-### Backend (connected)
-- **Node.js**
-- **Express.js**
-- **MongoDB**
-- **Redis**
-- **JWT Authentication**
-- **Zod Validation**
-- **AI APIs (ATS & Interview logic)**
-
----
-
-## 📂 Project Folder Structure
+## Project Structure
 
 ```txt
-folify/
-├── public/
-│   └── vite.svg
-│
-├── src/
-│   ├── assets/
-│   │   └── react.svg
-│   │
-│   ├── components/
-│   │   └── BeforeAuth/
-│   │       ├── assets/
-│   │       │   ├── Resumstoportfoilo.png
-│   │       │   └── atsimag.png
-│   │       │
-│   │       ├── context/
-│   │       │   └── userContext.jsx
-│   │       │
-│   │       ├── hooks/
-│   │       │   └── useAuth.jsx
-│   │       │
-│   │       ├── About.jsx
-│   │       ├── Ats.jsx
-│   │       ├── Banner.jsx
-│   │       ├── BlurLoading.jsx
-│   │       ├── Footer.jsx
-│   │       ├── Home.jsx
-│   │       ├── Home2.jsx
-│   │       ├── HowItWork.jsx
-│   │       ├── Interview.jsx
-│   │       ├── Loading.jsx
-│   │       ├── Login.jsx
-│   │       ├── MyAccount.jsx
-│   │       ├── Navbar.jsx
-│   │       ├── NoPageFound.jsx
-│   │       ├── PaymentPage.jsx
-│   │       ├── Portfolio.jsx
-│   │       ├── Profile.jsx
-│   │       ├── SignUp.jsx
-│   │       └── Subscription.jsx
-│   │
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-│
-├── .gitignore
-├── README.md
-├── eslint.config.js
-├── index.html
-├── package.json
-├── package-lock.json
-├── vercel.json
-└── vite.config.js
-````
+vite-project/
+|-- public/
+|   |-- logo.png
+|   `-- vite.svg
+|-- src/
+|   |-- assets/
+|   |   `-- react.svg
+|   |-- components/
+|   |   `-- BeforeAuth/
+|   |       |-- assets/
+|   |       |   |-- Resumstoportfoilo.png
+|   |       |   |-- a.png
+|   |       |   |-- atsimg.png
+|   |       |   |-- music.mp3
+|   |       |   `-- video1.mp4
+|   |       |-- context/
+|   |       |   `-- userContext.jsx
+|   |       |-- hooks/
+|   |       |   `-- useAuth.jsx
+|   |       |-- About.jsx
+|   |       |-- Ats.jsx
+|   |       |-- Banner.jsx
+|   |       |-- BlurLoading.jsx
+|   |       |-- Footer.jsx
+|   |       |-- Home.jsx
+|   |       |-- Home2.jsx
+|   |       |-- HowItWork.jsx
+|   |       |-- Interview.jsx
+|   |       |-- InterviewForm.jsx
+|   |       |-- Leaderboard.jsx
+|   |       |-- Loader.jsx
+|   |       |-- LoaderData.jsx
+|   |       |-- Loading.jsx
+|   |       |-- Login.jsx
+|   |       |-- MyAccount.jsx
+|   |       |-- Navbar.jsx
+|   |       |-- NoPageFound.jsx
+|   |       |-- PaymentPage.jsx
+|   |       |-- Portfolio.jsx
+|   |       |-- Profile.jsx
+|   |       |-- Report.jsx
+|   |       |-- ResumeComparer.jsx
+|   |       |-- ScrollToTop.jsx
+|   |       |-- SignUp.jsx
+|   |       |-- Song.jsx
+|   |       `-- Subscription.jsx
+|   |-- App.css
+|   |-- App.jsx
+|   |-- index.css
+|   `-- main.jsx
+|-- eslint.config.js
+|-- index.html
+|-- package.json
+|-- package-lock.json
+|-- vercel.json
+`-- vite.config.js
+```
 
----
+## Routes
 
-## 🔐 Authentication Flow
+| Route | Component | Access |
+| --- | --- | --- |
+| `/` | `Home` | Public |
+| `/sign-up` | `SignUp` | Public |
+| `/login` | `Login` | Public |
+| `/about` | `About` | Public |
+| `/how-it-works` | `HowItWork` | Public |
+| `/contact` | `Profile` | Public |
+| `/ats-resume-checker` | `Ats` | Auth required |
+| `/interview-prep` | `Interview` | Auth required |
+| `/portfolio-builder` | `Portfolio` | Auth required |
+| `/resume-comparer` | `ResumeComparer` | Auth required |
+| `/leaderboard` | `Leaderboard` | Auth required |
+| `/my-account` | `MyAccount` | Auth required |
+| `/subscription` | `Subscription` | Auth required |
+| `/payment` | `PaymentPage` | Auth required through plan flow |
+| `/report` | `Report` | Requires interview state |
+| `*` | `NoPageFound` | Public |
 
-* User logs in / signs up
-* Auth state stored using `userContext`
-* Protected routes use `useAuth` hook
-* Backend validates session via cookies
+## Backend Integrations
 
----
+The frontend currently calls these hosted APIs:
 
-## 💳 Subscription & Payment Flow
+| Purpose | Endpoint |
+| --- | --- |
+| Auth check | `GET https://folify.onrender.com/api/auth` |
+| Login | `POST https://folify.onrender.com/api/login` |
+| Signup | `POST https://folify.onrender.com/api/register` |
+| Logout | `GET https://folify.onrender.com/api/logout` |
+| Upload resume | `POST https://folify.onrender.com/resumes/upload` |
+| ATS scanner | `GET https://folify.onrender.com/start/atsScanner` |
+| Interview questions | `POST https://folify.onrender.com/start/interview` |
+| Interview report | `POST https://folify.onrender.com/api/google` |
+| Buy plan | `POST https://folify.onrender.com/user/buy` |
+| Compare resumes | `POST https://folify.onrender.com/resumes/compare` |
+| Leaderboard | `GET https://folify.onrender.com/resumes/leaderboard` |
+| Portfolio generator | `POST https://prewell-backend-2.onrender.com/resumes/generate-website` |
 
-1. User selects a plan:
+Auth-related requests use cookies with `withCredentials: true`, so the backend must allow credentialed CORS and set cookies correctly.
 
-   * **$10 → 1 access**
-   * **$20 → 2 accesses**
-   * **$30 → 3 accesses**
-2. Redirect to payment page
-3. User solves a math challenge (anti-bot verification)
-4. Backend validates:
-
-   * Numbers
-   * Sum
-   * Plan amount
-5. Access is granted based on plan
-
----
-
-## 🧠 ATS Scanner Logic (High Level)
-
-* Resume uploaded by user
-* AI analyzes:
-
-  * Keywords
-  * Sections
-  * Readability
-  * Structure
-* Frontend displays:
-
-  * Scores
-  * Matched / missing keywords
-  * Improvement suggestions
-
----
-
-## ⚙️ Installation & Setup
-
-### 1️⃣ Clone the repo
+## Installation
 
 ```bash
 git clone https://github.com/amanasthana1111/PreWell--Frontend
-
-```
-
-### 2️⃣ Install dependencies
-
-```bash
+cd PreWell--Frontend/vite-project
 npm install
 ```
 
-### 3️⃣ Start development server
+## Development
 
 ```bash
 npm run dev
 ```
 
----
+## Build
 
-## 🌍 Deployment
-
-* Frontend deployed on **Vercel**
-* Backend hosted separately
-* `vercel.json` handles SPA routing
-
----
-
-## 📌 Environment Notes
-
-* Uses `withCredentials: true` for auth
-* Backend must allow CORS with credentials
-* Cookies set as `httpOnly`, `secure`, `sameSite=None`
-
----
-
-## 🧪 Validation & Error Handling
-
-* **Zod** used for strict backend validation
-* Frontend normalizes data before API calls
-* Safe rendering to avoid React object-rendering errors
-
----
-
-## 📈 Future Enhancements
-
-* Stripe / Razorpay integration
-* Resume vs Job Description comparison
-* ATS score history
-* Admin dashboard
-* Download ATS report (PDF)
-* Dark mode
-
----
-
-## 👨‍💻 Author
-
-**Aman Asthana**
-Made with ❤️ for building job-ready careers using AI.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
+```bash
+npm run build
 ```
 
----
+## Preview Production Build
 
-If you want, I can also:
-- ✨ Add badges (Vercel, React, Tailwind)
-- 📸 Add screenshots section
-- 🧠 Rewrite README for recruiters
-- 🌍 Make it open-source ready
-
-Just say **next** 👍
+```bash
+npm run preview
 ```
+
+## Lint
+
+```bash
+npm run lint
+```
+
+## Deployment
+
+The app is configured for Vercel. `vercel.json` rewrites all routes to `/` so React Router can handle SPA routes after refresh.
+
+## Notes
+
+- The app currently uses hosted backend URLs directly in components.
+- PDF uploads are validated on the frontend before requests are sent.
+- Protected feature pages use `useUserAuth`, which redirects unauthenticated users to `/login`.
+- `AuthProvider` wraps the app in `main.jsx` and stores auth state in React context.
+- Portfolio downloads are generated in the browser with JSZip and File Saver.
+
+## Author
+
+Aman Asthana
+
+## License
+
+This project is licensed under the MIT License.
